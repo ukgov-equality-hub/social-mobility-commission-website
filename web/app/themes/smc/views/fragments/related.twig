@@ -1,0 +1,36 @@
+<!-- Related content -->
+{% if fields.related_cards %}
+<div class="wrapper-section light-teal p-top-10 p-bottom-7">
+    <div class="grid-container">
+
+        <div class="section-title-block m-bottom-9">
+            <h2 class="headline-1">Related Content</h2>
+        </div>
+
+        <div class="grid-x grid-padding-x align-center">
+            {% for card in fields.related_cards %}
+            <div class="cell large-4 medium-6">
+                <a class="feature-card m-bottom-9" href="{{ card.link.url }}">
+                    <div class="inner">
+                        {% set TImg = Image(card.image) %}
+                        {% set altOverride = "related image" %}
+                        {% set srcset = TImg.src|resize(420) ~ ' 1024w, ' ~ TImg.src|resize(420) ~ ' 300w,' %}
+                        {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
+                        <div class="content">
+                            <h2 class="headline-3 m-bottom-4">{{ card.title }}</h2>
+                            <p class="body-small m-bottom-6">{{ card.text }}</p>
+                            <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+</div>
+{% endif %}

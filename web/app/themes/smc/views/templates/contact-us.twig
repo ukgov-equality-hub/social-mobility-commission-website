@@ -1,0 +1,74 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ include('fragments/intro-text.twig', {text:text}) }}
+    <!-- Contact accordion -->
+<div class="accordion accordion--contact">
+
+        <!-- General enquiries -->
+        <div class="accordion-item">
+            <button class="accordion-button " aria-expanded="false" aria-controls="acc-pnl1">{{ fields.contact_accordion_one_title }}</button>
+            <div id="acc-pnl1" class="accordion-panel">
+                <div class="grid-container">
+                    <div class="form-container p-bottom-9">
+                        <div class="text-center">
+                            <p class="body-large m-bottom-9"> {{ fields.contact_accordion_one_text }}</p>
+                        </div>
+                        <div class="form-general">
+                            {{ fn('do_shortcode', ' [contact-form-7 id="320" title="General Enquiries"]') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- Applications -->
+        <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false" aria-controls="acc-pnl2">{{ fields.contact_accordion_two_title }}</button>
+            <div id="acc-pnl2" class="accordion-panel">
+                <div class="grid-container">
+                    <div class="form-container p-bottom-9">
+                        <div class="text-center">
+                            <p class="body-large m-bottom-9">{{ fields.contact_accordion_two_text }}</p>
+                        </div>
+                        <div class="form-general">
+                            {{ fn('do_shortcode', ' [contact-form-7 id="322" title="Applications"]') }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Press -->
+        <div class="accordion-item">
+            <button class="accordion-button" aria-expanded="false" aria-controls="acc-pnl3">{{ fields.contact_accordion_three_title }}</button>
+            <div id="acc-pnl3" class="accordion-panel">
+                <div class="grid-container">
+                    <div class="form-container">
+                        <div class="form-container p-bottom-9">
+                            <div class="text-center">
+                                <p class="body-large m-bottom-9">{{ fields.contact_accordion_three_text }}</p>
+                            </div>
+                            <div class="form-general">
+
+                                {{ fn('do_shortcode', ' [contact-form-7 id="323" title="Press"]') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <article>
+                {{ page.content | raw }}
+            </article>
+        </div>
+    </div>
+    {% if fields.related_cards %}
+        {% include 'fragments/related.twig' %}
+    {% endif %}
+{% endblock %}

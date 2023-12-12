@@ -1,0 +1,144 @@
+// main: ../main.scss
+
+/* Social share */
+.social-share {
+	list-style: none;
+	margin: 0;
+	text-align: center;
+
+	li {
+		display: inline-block;
+		margin: 0 .8rem;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		a {
+			font-size: 1.5rem;
+			color: $col-dark-grey;
+			transition: .3s ease-out;
+
+			&:hover, &:focus {
+				color: $col-orange;
+			}
+		}
+	}
+
+	&.align-left {
+		text-align: left;
+	}
+}
+
+/* Label item */
+.label-item {
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 400;
+	color: $col-grey;
+	line-height: 1.25;
+	background-color: $col-light-blue;
+	padding: .55rem 1.25rem .8rem;
+	border: 1px solid $col-dark-grey;
+	border-radius: $border-radius-5;
+	margin-bottom: 1rem;
+}
+
+/* Metadata list */
+.metadata-list {
+	list-style: none;
+	text-align: center;
+	margin: 0;
+
+	li {
+		margin-left: .4rem;
+		margin-right: .4rem;
+	}
+}
+
+/* Checkbox */
+.chk-container {
+	font-family: $font-main;
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	padding-top: .45rem;
+	padding-bottom: .45rem;
+	margin-bottom: 0;
+	cursor: pointer;
+	font-size: .98rem;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+
+	.checkmark {
+		position: absolute;
+		top: .56rem;
+		left: 0;
+		height: 20px;
+		width: 20px;
+		border: 1px solid #bdbdbd;
+		border-radius: 3px;
+		background-color: #fff;
+		transition: background-color .2s;
+
+		&:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+
+		&:after {
+			left: 7px;
+			top: 3px;
+			width: 5px;
+			height: 10px;
+			border: solid #fff;
+			border-width: 0 2px 2px 0;
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+	}
+
+	input:checked~.checkmark {
+		background-color: $col-filters-title-bg;
+		border-color: $col-filters-title-bg;
+
+		&:after {
+			display: block;
+		}
+	}
+}
+
+/* Medium - Media Query */
+@media screen and (min-width: 48em) and (max-width: 89.9375em) {
+
+	.label-item {
+		padding: .45rem .75rem .7rem;
+	}
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+	.label-item {
+		padding: .55rem .75rem .65rem;
+		font-size: .875rem;
+	}
+
+}

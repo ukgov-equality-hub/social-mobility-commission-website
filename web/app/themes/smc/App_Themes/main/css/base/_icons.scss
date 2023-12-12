@@ -1,0 +1,74 @@
+// main: ../main.scss
+
+/* icomoon font-face icons */
+@font-face {
+	font-family: "icomoon";
+	src: url("../icons/icomoon.ttf?dlzl4g") format("truetype"), url("../icons/icomoon.woff?dlzl4g") format("woff"), url("../icons/icomoon.svg?dlzl4g#icomoon") format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+[class^="szicon-"],
+[class*=" szicon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.szicon-tick:before {
+  content: "\e900";
+}
+.szicon-send:before {
+  content: "\e901";
+}
+.szicon-chevron-left:before {
+  content: "\e90d";
+}
+.szicon-chevron-right:before {
+  content: "\e910";
+}
+.szicon-chevron-down:before {
+  content: "\e902";
+}
+.szicon-chevron-up:before {
+  content: "\e903";
+}
+.szicon-cross:before {
+  content: "\e904";
+}
+.szicon-info:before {
+  content: "\e905";
+}
+.szicon-instagram:before {
+  content: "\e906";
+}
+.szicon-linked-in:before {
+  content: "\e907";
+}
+.szicon-menu:before {
+  content: "\e908";
+}
+.szicon-minus:before {
+  content: "\e909";
+}
+.szicon-play:before {
+  content: "\e90a";
+}
+.szicon-plus:before {
+  content: "\e90b";
+}
+.szicon-search:before {
+  content: "\e90c";
+}
+.szicon-twitter:before {
+  content: "\e90f";
+}

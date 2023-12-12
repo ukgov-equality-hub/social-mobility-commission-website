@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="no-js"
+      lang="en"
+      dir="ltr">
+
+{% include 'components/base/html-header.twig' %}
+
+<body class="{{ body_class }}">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTLHS4C4"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+{% include 'components/base/header.twig' %}
+
+<main id="maincontent">
+    {% block hero %}
+
+        {% if page.hero_type == 1 %}
+            {% include 'components/heros/hero-1.twig' with {'page': page} %}
+        {% else %}
+            {% include 'components/heros/hero-2.twig' with {'page': page} %}
+        {% endif %}
+
+        {% if not is_front_page %}
+            {% include 'components/heros/breadcrumbs.twig' %}
+        {% endif %}
+    {% endblock %}
+
+            {% block content %}
+                <p>Sorry, no content</p>
+            {% endblock %}
+
+</main>
+
+{% include 'components/base/footer.twig' %}
+
+</body>
+</html>
+

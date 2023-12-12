@@ -1,0 +1,122 @@
+// main: ../main.scss
+
+.tooltip-item {
+  margin-bottom: 1.5rem;
+
+  .tooltip-button {
+    position: relative;
+    padding-left: 32px;
+    min-height: 32px;
+    margin-bottom: .75rem;
+
+    span {
+      position: relative;
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: $col-dark-grey;
+      padding-bottom: .25rem;
+      border-bottom: 1px solid $col-dark-grey;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        height: $border-width-1;
+        color: inherit;
+        background-color: $col-dark-grey;
+        transition: .15s linear;
+      }
+    }
+
+    &:before {
+      content: "\e905";
+      font-family: $font-icon;
+      font-size: 1.5rem;
+      font-weight: normal;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+
+    &:hover, &:focus {
+      span {
+        color: $col-dark-grey;
+
+        &:after {
+          height: $border-width-3;
+        }
+      }
+    }
+  }
+
+  .tooltip {
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition-duration: .4s;
+    transition-property: max-height, visibility;
+
+    &.open {
+      visibility: visible;
+      max-height: initial;
+      transition-duration: .4s;
+      transition-property: max-height, visibility;
+    }
+  }
+
+  .tooltip-panel {
+    position: relative;
+    background-color: $col-dark-grey;
+    border-radius: $border-radius-3;
+    padding: 1rem 1.75rem 1.4rem 1.5rem;
+    color: $col-white;
+    margin-top: 8px;
+
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $col-dark-grey;
+      position: absolute;
+      top: -8px;
+      left: 3rem;
+    }
+
+    p {
+      color: $col-white;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+
+      &.title {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+    font-size: 1rem;
+    color: $col-white;
+  }
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+  .tooltip-item {
+    .tooltip-panel {
+      p {
+        font-size: .875rem;
+      }
+    }
+  }
+
+}

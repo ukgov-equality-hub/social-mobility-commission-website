@@ -1,0 +1,167 @@
+<div id="{{ navID }}" class="{{ navclass|default('') }}">
+    <div class="menu-container">
+    <ul class=" {{ ulclass|default("nav-main") }}">
+        <li >
+        {% for item in menu.items %}
+                {% include 'fragments/anchor.twig' with { 'link': item } %}
+                {% if item.children %}
+                    <ul class="mobile-sub-menu level-2">
+                        {% for child in item.children %}
+                            <li>
+                                {% if child.children %}
+                                    {% include 'fragments/anchor.twig' with { 'link': child } %}
+                                    <ul class="mobile-sub-menu level-3">
+{#                                        <li><a class="main-item" href="">Research, policies and reports</a></li>#}
+                                        {% for child in child.children %}
+
+                                            <li><a href="{{ child.url }}">Research, policies and reports</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    {% include 'fragments/anchor.twig' with { 'link': child } %}
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+        {% endfor %}
+        </li>
+    </ul>
+    </div>
+    <div class="menu-container">
+        <button type="button" class="back-one-level">
+            <span>Back</span>
+        </button>
+        <div class="sub-menu-container"></div>
+    </div>
+    <div class="menu-container">
+        <button type="button" class="back-one-level">
+            <span>Back</span>
+        </button>
+        <div class="sub-menu-container"></div>
+    </div>
+</div>
+
+{#<!-- Mobile menu -->#}
+{#<div id="pnlMobileNav" class="wrapper-mobile-menu">#}
+{#    <div class="menu-container">#}
+{#        <ul class="mobile-menu level-1">#}
+{#            <li>#}
+{#                <a href="">About us</a>#}
+{#                <ul class="mobile-sub-menu level-2">#}
+{#                    <li><a href="">Who are we</a></li>#}
+{#                    <li><a href="">What we do</a></li>#}
+{#                    <li><a href="">Our people</a></li>#}
+{#                    <li><a href="">Annual report</a></li>#}
+{#                    <li><a href="">Contact us</a></li>#}
+{#                </ul>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="">Our work</a>#}
+{#                <ul class="mobile-sub-menu level-2">#}
+{#                    <li><a href="">What is social mobility</a></li>#}
+{#                    <li><a href="">Why social mobility matters</a></li>#}
+{#                    <li>#}
+{#                        <a href="">Research, policies and reports</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">Research, policies and reports</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="">Impact</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">Impact</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="">Find resources</a>#}
+{#                <ul class="mobile-sub-menu level-2">#}
+{#                    <li>#}
+{#                        <a href="">For businesses</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">For businesses</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="">For educators</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">For educators</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="">For young people</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">For young people</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="">For families</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">For families</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="">News & media</a>#}
+{#                <ul class="mobile-sub-menu level-2">#}
+{#                    <li>#}
+{#                        <a href="">News and blogs</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">News and blogs</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="">Media centre</a>#}
+{#                        <ul class="mobile-sub-menu level-3">#}
+{#                            <li><a class="main-item" href="">Media centre</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                            <li><a href="">Nav item</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </div>#}
+{#    <div class="menu-container">#}
+{#        <button type="button" class="back-one-level">#}
+{#            <span>Back</span>#}
+{#        </button>#}
+{#        <div class="sub-menu-container"></div>#}
+{#    </div>#}
+{#    <div class="menu-container">#}
+{#        <button type="button" class="back-one-level">#}
+{#            <span>Back</span>#}
+{#        </button>#}
+{#        <div class="sub-menu-container"></div>#}
+{#    </div>#}
+{#</div>#}

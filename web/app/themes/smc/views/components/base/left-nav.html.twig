@@ -1,0 +1,38 @@
+{% import _self as menus %}
+
+<nav class="{% if is_mobile %}mobile-sub-menu{% endif %} content-padder" aria-label="Page Sub Navigation">
+
+
+{% if menuItems is defined %}
+    <a class="cta-nav-side cta-toggle-panel show-for-small-only" href="javascript:">Toggle Navigation</a>
+    <ul {% if not is_mobile %}class="nav-submenu toggle-panel"{% endif %} >
+        {% if topItem.ID !=  current_item_id %}
+            <li><a href="{{ topItem.link }}">{{ topItem.title }}</a>
+                <ul>
+                    {{ menus.embedded_list(menuItems, current_item_id) }}
+                </ul>
+            </li>
+        {% else %}
+            {{ menus.embedded_list(menuItems, current_item_id) }}
+        {% endif %}
+    </ul>
+{% endif %}
+</nav>
+
+
+
+
+{% macro embedded_list(items, currentItemID, ulClass="submenu--submenu") %}
+    {% for item in items %}
+        <li class=" {% if item.children(item.post_type)  %}has-sub-menu{% endif %}" >
+            <a id="l{{ item.ID }}" class="{% if item.ID == currentItemID %}is-active {% endif%} {% if item.children(item.post_type)  %}dropdown with-sub{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
+            {% if item.children(item.post_type)  %}
+                <ul id="dropdown-l{{ item.ID }}" class="{{ ulClass|default('sub-menu') }}">
+                    {# YUCK - replicate this item again since the above link acts as a dropdwn trigger #}
+                    <li><a {% if item.ID == currentItemID %}class="is-active" {% endif%} href="{{ item.link }}">{{ item.title }}</a></li>
+                    {{ _self.embedded_list(item.children(item.post_type), currentItemID,'sub-menu sub-sub-menu') }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

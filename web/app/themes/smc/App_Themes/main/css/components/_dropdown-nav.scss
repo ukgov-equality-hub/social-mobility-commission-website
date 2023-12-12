@@ -1,0 +1,245 @@
+// main: ../main.scss
+
+#dropdownNav {
+  display: initial;
+  // position: relative;
+  // z-index: 1;
+}
+
+.dropdown-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  list-style: none;
+  margin: 0 0 0 2rem;
+  padding-top: 1.5rem;
+
+  > li {
+    display: inline-block;
+  }
+
+  .nav-item {
+    position: relative;
+    display: inline-block;
+    color: $col-dark-grey;
+    padding: .875rem 2rem 2.06rem .25rem;
+    border-bottom: $border-width-4 solid transparent;
+    white-space: nowrap;
+    transition: .3s ease-out;
+
+    &:before {
+      content: "\e902";
+      font-family: $font-icon;
+      font-size: 1.25rem;
+      font-weight: normal;
+      line-height: 1;
+      position: absolute;
+      right: .25rem;
+      top: .915rem;
+      transition: .15s ease-in-out;
+    }
+
+    &:hover, &:focus {
+      border-color: $col-dark-grey;
+    }
+
+    &.current {
+      font-weight: 700;
+      border-color: $col-dark-grey;
+    }
+  }
+
+  .dropdown-panel {
+    z-index: 1;
+    position: absolute;
+    // top: 100%;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    width: 100%;
+    padding: 3rem 0 4rem;
+    background-color: $col-light-pink;
+    text-align: left;
+    box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.1);
+  }
+
+  [aria-expanded=true]  {
+    &:after {
+      opacity: 1;
+    }
+    &:before {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .sub-nav-header {
+    position: relative;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+    padding: 1rem 0 .75rem 4.5rem;
+
+    // &:before {
+    //   content: '';
+    //   height: 75px;
+    //   width: 55px;
+    //   position: absolute;
+    //   top: .2rem;
+    //   left: 0;
+    //   background-image: url(../img/layout/illustrations/policy-papers.svg);
+    //   background-position: center;
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    // }
+
+    .icon {
+      height: 75px;
+      width: 55px;
+      position: absolute;
+      top: .2rem;
+      left: 0;
+    }
+
+    &:after {
+      content: "\e910";
+      font-family: $font-icon;
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .sub-nav {
+    list-style: none;
+    margin: 0;
+
+    > li {
+      border-bottom: $border-width-1 solid $col-dark-grey;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      > a {
+        position: relative;
+        display: block;
+        padding: 1.15rem 2rem 1.25rem 1rem;
+        transition: .3s ease-out;
+
+        &:before {
+          content: "\e910";
+          font-family: $font-icon;
+          font-size: 1.25rem;
+          font-weight: normal;
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: .3s ease-out;
+        }
+
+        &:after {
+          content: '';
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: $border-width-3;
+          width: 100%;
+          background-color: $col-dark-grey;
+          transition: .3s ease-out;
+        }
+
+        &:hover, &:focus, &.active {
+          color: $col-dark-grey;
+          background-color: rgba($col-white, .5);
+
+          &:before {
+            right: .5rem;
+          }
+
+          &:after {
+            opacity: 1;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1090px) {
+
+  .dropdown-nav {
+    margin-left: 1rem;
+    .label-medium {
+      font-size: 1rem;
+      padding-right: 1.5rem;
+    }
+    .nav-item {
+      &:before {
+        font-size: 1rem;
+      }
+    }
+  }
+
+}
+
+/**
+ * No JS fallback
+ *
+ * Triggers menus on hover rather than click. Supports keyboard navigation in modern browsers.
+ */
+.dropdown-nav.no-js li:hover > .dropdown-panel {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-nav.no-js li:focus-within > .dropdown-panel {
+  /*[2]*/
+  visibility: visible;
+  opacity: 1;
+}
+
+/**
+ * Open/Close Menu Behavior with JS
+ */
+.dropdown-nav .dropdown-panel[aria-hidden=false] {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Prevent offscreen-submenus */
+// .dropdown-nav .sub-menu--right {
+//   left: auto !important;
+//   right: 0 !important;
+// }
+
+/**
+ * Footnotes
+ *
+ * [1] Using `visibility` instead of `display` allows for easier transitions and animation of submenus
+ * [2] Must be a separate ruleset so that hover works in non-modern browsers
+ */
+
+.dropdown-nav [aria-expanded=true] svg {
+  transform: scaleY(-1);
+}
+
+// /* Responsive Submenu Behavior */
+// .dropdown-nav .dropdown-panel[aria-hidden=false] {
+//   position: static;
+//   width: 100%;
+//   flex: 0 0 auto;
+// }
+//
+// @media (min-width: 540px) {
+//   .dropdown-nav.dropdown-panel[aria-hidden=false] {
+//     position: absolute;
+//     width: auto;
+//   }
+// }

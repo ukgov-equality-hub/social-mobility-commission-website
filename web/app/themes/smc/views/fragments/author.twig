@@ -1,0 +1,16 @@
+<!-- Author -->
+<div class="wrapper-section p-bottom-9">
+    <div class="grid-container">
+        <div class="author-block">
+            {% set TImg = Image(fields.author_image) %}
+            {% set altOverride = "author image" %}
+            {% set srcset = TImg.src|resize(200) ~ ' 1024w, ' ~ TImg.src|resize(200) ~ ' 300w,' %}
+            {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'author-img'} )  }}
+            <p class="author-name">{{ fields.author_name }}{% if fields.author_job_title %}, {{ fields.author_job_title }}{% endif %}</p>
+            <ul class="meta-items">
+                <li>{{ fields.author_meta_1 }}</li>
+                <li>{{ fields.author_meta_2 }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

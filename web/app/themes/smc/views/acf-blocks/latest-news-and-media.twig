@@ -1,0 +1,77 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+        <!-- Latest news and media -->
+        <div class="wrapper-section p-top-10 p-bottom-10">
+            <div class="grid-container">
+
+                <div class="section-title-block m-bottom-10">
+                    <h2 class="headline-1 m-bottom-4">{{ fields.title }}</h2>
+                    <p class="body-large">{{ fields.subtitle }}</p>
+                </div>
+
+                {% if fields.override %}
+                    {% set overrideCount =  fields.override.post|length %}
+                        {% set latestNewsPosts = fetchRecentPosts(overrideCount, fields.override) %}
+                    {% else %}
+                        {% set latestNewsPosts = fetchRecentPosts(0) %}
+                {% endif %}
+{#                {% set latestNewsPosts = fetchRecentPosts() %}#}
+{#                {{ dump(latestNewsPosts) }}#}
+                <div class="grid-x grid-padding-x large-up-3 medium-up-2 align-center">
+                    {% for post in latestNewsPosts %}
+
+                        {% set card = Post(post) %}
+
+                        {% set postType = fn('get_post_type', post.ID) %}
+                        {% set postTypeObj = fn('get_post_type_object', postType) %}
+
+                    <div class="cell">
+                        <a class="feature-card m-bottom-10" href="{{ card.link }}">
+                            <div class="inner">
+                                {% set TImg = Image(card.thumbnail) %}
+                                {% set altOverride = "latest - image" %}
+                                {% set srcset = TImg.src|resize(640) ~ ' 1024w, ' ~ TImg.src|resize(640) ~ ' 300w,' %}
+                                {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
+                                <span class="category label-small">{{ postTypeObj.label[:1]|upper ~ postTypeObj.label[1:] }}</span>
+                                <div class="content">
+                                    <p class="date label-small m-bottom-2">{{ card.post_date|date('d/m/Y') }}</p>
+                                    <h3 class="headline-3 m-bottom-4">{{ card.post_title }}</h3>
+                                    <p class="body-small m-bottom-6">{{ post.post_excerpt }}</p>
+                                    <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="text-center">
+                    <a class="btn-primary" href="{{ fields.link.url }}">
+                        <span>{{ fields.link.title }}</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

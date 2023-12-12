@@ -1,0 +1,79 @@
+// main: ../main.scss
+
+.circle-chart {
+  text-align: center;
+  max-width: 312px;
+  margin-left: auto;
+  margin-right: auto;
+
+  svg {
+    margin-bottom: 1rem;
+  }
+
+  .outer-bar {
+    fill: transparent;
+    stroke: $col-dark-grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    transform-origin: center center;
+    transform: rotate(-96deg);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
+  .bar {
+    fill: transparent;
+    stroke: $col-white;
+    stroke-width: 18;
+    stroke-linecap: round;
+    transform-origin: center center;
+    transform: rotate(-96deg);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
+  .outer-progress-bar {
+    fill: transparent;
+    stroke: $col-dark-grey;
+    stroke-width: 20;
+    stroke-linecap: round;
+    transform-origin: center center;
+    transform: rotate(-80deg);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
+  .progress-bar {
+    fill: transparent;
+    stroke: $col-teal;
+    stroke-width: 18;
+    stroke-linecap: round;
+    transform-origin: center center;
+    transform: rotate(-80deg);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
+  .percentage {
+    font-family: $font-main;
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: $col-dark-grey;
+  }
+
+}
+
+/* Tablet - Media query */
+@media screen and (min-width: 48em) and (max-width: 63.9375em) {
+
+  .circle-chart {
+    max-width: 220px;
+  }
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+
+}

@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if text %}
+        {{ include('fragments/intro-text.twig', {text:text}) }}
+    {% endif %}
+    {% if fields.add_author %}
+        {{ include('fragments/author.twig', {fields:fields}) }}
+    {% endif %}
+    {% if page.post_type == "events" %}
+        {{ include('fragments/events-custom.twig', {fields:fields}) }}
+    {% endif %}
+    {% if page.post_type == "organisational-dir" %}
+        {{ include('fragments/organisation-custom.twig', {fields:fields}) }}
+    {% endif %}
+    {% if page.post_type == "charity" %}
+        {{ include('fragments/charity-custom.twig', {fields:fields}) }}
+    {% endif %}
+    {% if page.post_type == "funders" %}
+        {{ include('fragments/funders-custom.twig', {fields:fields}) }}
+    {% endif %}
+
+    {{ page.content | raw }}
+
+    {% include 'fragments/related.twig' %}
+{% endblock %}
