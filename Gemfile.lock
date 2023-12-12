@@ -1,0 +1,48 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    airbrussh (1.4.0)
+      sshkit (>= 1.6.1, != 1.7.0)
+    capistrano (3.7.0)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-composer (0.0.6)
+      capistrano (>= 3.0.0.pre)
+    capistrano-harrow (0.5.3)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano-ssh-doctor (1.0.0)
+      capistrano (>= 3.1)
+    capistrano-wpcli (0.1.5)
+      capistrano (~> 3.6)
+      sshkit (~> 1.11)
+    concurrent-ruby (1.1.9)
+    i18n (1.8.10)
+      concurrent-ruby (~> 1.0)
+    net-scp (3.0.0)
+      net-ssh (>= 2.6.5, < 7.0.0)
+    net-ssh (6.1.0)
+    rake (13.0.6)
+    sshkit (1.21.2)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
+
+PLATFORMS
+  x86_64-darwin-20
+
+DEPENDENCIES
+  capistrano (= 3.7.0)
+  capistrano-composer
+  capistrano-rvm
+  capistrano-ssh-doctor
+  capistrano-wpcli
+
+RUBY VERSION
+   ruby 2.7.2p137
+
+BUNDLED WITH
+   2.2.24
