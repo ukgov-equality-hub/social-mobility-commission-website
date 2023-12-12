@@ -1,0 +1,115 @@
+# Translation of Plugins - Rewrite Rules Inspector - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - Rewrite Rules Inspector - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-05-18 19:53:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - Rewrite Rules Inspector - Stable (latest release)\n"
+
+#: src/class-rewrite-rules-inspector-list-table.php:140
+msgid "Source"
+msgstr "Source"
+
+#: src/class-rewrite-rules-inspector-list-table.php:139
+msgid "Rewrite"
+msgstr "Rewrite"
+
+#: src/class-rewrite-rules-inspector-list-table.php:138
+msgid "Rule"
+msgstr "Rule"
+
+#: src/class-rewrite-rules-inspector-list-table.php:124
+msgid "Reset"
+msgstr "Reset"
+
+#: src/class-rewrite-rules-inspector-list-table.php:122
+msgid "Filter"
+msgstr "Filter"
+
+#: src/class-rewrite-rules-inspector-list-table.php:108
+msgid "Rule Source:"
+msgstr "Rule Source:"
+
+#: src/class-rewrite-rules-inspector-list-table.php:105
+msgid "Match URL:"
+msgstr "Match URL:"
+
+#: src/class-rewrite-rules-inspector-list-table.php:102
+msgid "Download"
+msgstr "Download"
+
+#: src/class-rewrite-rules-inspector-list-table.php:102
+msgid "Download current list of rules as a .txt file"
+msgstr "Download current list of rules as a .txt file"
+
+#: src/class-rewrite-rules-inspector-list-table.php:84
+msgid "Flush Rules"
+msgstr "Flush Rules"
+
+#: src/class-rewrite-rules-inspector-list-table.php:84
+msgid "Flush your rewrite rules to regenerate them"
+msgstr "Flush your rewrite rules to regenerate them"
+
+#: src/class-rewrite-rules-inspector-list-table.php:50
+msgid "No rewrite rules were found."
+msgstr "No rewrite rules were found."
+
+#: src/class-rewrite-rules-inspector.php:303
+#: src/class-rewrite-rules-inspector.php:334
+msgid "You do not have permissions to perform this action."
+msgstr "You do not have permissions to perform this action."
+
+#. translators: %s: Count of rewrite rules
+#: src/class-rewrite-rules-inspector.php:280
+msgid "A listing of all %1$s rewrite rules for this site."
+msgstr "A listing of all %1$s rewrite rules for this site."
+
+#. translators: %s: Count of rewrite rules
+#: src/class-rewrite-rules-inspector.php:273
+msgid "A listing of all %1$s rewrite rules for this site that match \"<a target=\"_blank\" href=\"%2$s\">%2$s</a>\""
+msgstr "A listing of all %1$s rewrite rules for this site that match \"<a target=\"_blank\" href=\"%2$s\">%2$s</a>\""
+
+#. translators: %d: Count of missing rewrite rules
+#: src/class-rewrite-rules-inspector.php:264
+msgid "%d rewrite rule may be missing, try flushing."
+msgid_plural "%d rewrite rules may be missing, try flushing."
+msgstr[0] "%d rewrite rule may be missing, try flushing."
+msgstr[1] "%d rewrite rules may be missing, try flushing."
+
+#: src/class-rewrite-rules-inspector.php:260
+msgid "No rewrite rules yet, try flushing."
+msgstr "No rewrite rules yet, try flushing."
+
+#: src/class-rewrite-rules-inspector.php:104
+msgid "Rewrite rules flushed."
+msgstr "Rewrite rules flushed."
+
+#: src/class-rewrite-rules-inspector.php:95
+msgid "Rewrite Rules"
+msgstr "Rewrite Rules"
+
+#. Author URI of the plugin
+msgid "https://automattic.com/"
+msgstr "https://automattic.com/"
+
+#. Author of the plugin
+msgid "Automattic, Daniel Bachhuber"
+msgstr "Automattic, Daniel Bachhuber"
+
+#. Description of the plugin
+msgid "Simple WordPress admin tool for inspecting your rewrite rules."
+msgstr "Simple WordPress admin tool for inspecting your rewrite rules."
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/rewrite-rules-inspector/"
+msgstr "https://wordpress.org/plugins/rewrite-rules-inspector/"
+
+#. Plugin Name of the plugin
+#: src/class-rewrite-rules-inspector.php:95
+msgid "Rewrite Rules Inspector"
+msgstr "Rewrite Rules Inspector"
