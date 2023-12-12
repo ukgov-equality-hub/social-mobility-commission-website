@@ -1,0 +1,88 @@
+// main: ../main.scss
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* need to override foundation grid container width */
+
+.grid-container{
+	max-width: 90rem;
+	padding-left: 6rem;
+	padding-right: 6rem;
+}
+
+.grid-padding-x > .cell {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.grid-container:not(.full) > .grid-padding-x {
+	margin-left: -1.5rem;
+	margin-right: -1.5rem;
+}
+
+/* Desktop - Media query */
+@media screen and (min-width: 64em) and (max-width: 89.9375em) {
+
+	.grid-container {
+		padding-left: 3.5rem;
+		padding-right: 3.5rem;
+	}
+
+	.grid-padding-x > .cell {
+		padding-left: .75rem;
+		padding-right: .75rem;
+	}
+
+	.grid-container:not(.full) > .grid-padding-x {
+		margin-left: -.75rem;
+		margin-right: -.75rem;
+	}
+}
+
+/* Tablet - Media query */
+@media screen and (min-width: 48em) and (max-width: 63.9375em) {
+
+	.grid-container {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+
+	.grid-padding-x > .cell {
+		padding-left: .75rem;
+		padding-right: .75rem;
+	}
+
+	.grid-container:not(.full) > .grid-padding-x {
+		margin-left: -.75rem;
+		margin-right: -.75rem;
+	}
+
+	.medium-text-left {
+		text-align: left;
+	}
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+	.grid-container {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.grid-padding-x > .cell {
+		padding-left: .5rem;
+		padding-right: .5rem;
+	}
+
+	.grid-container:not(.full) > .grid-padding-x {
+		margin-left: -.5rem;
+		margin-right: -.5rem;
+	}
+
+	.small-text-center {
+		text-align: center;
+	}
+}

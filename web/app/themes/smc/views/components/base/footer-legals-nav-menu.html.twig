@@ -1,0 +1,17 @@
+<ul class=" {{ ulclass }}">
+{% for item in menu.items %}
+    <li>
+        {% include 'fragments/anchor.twig' with { 'link': item, 'aclass':'label-small' } %}
+    </li>
+{#    <h4 class="headline-5 m-bottom-3">{{ item.post_title }}</h4>#}
+{#        {% if item.children %}#}
+{#          #}
+{#                {% for child in item.children %}#}
+{#                  #}
+{#                {% endfor %}#}
+{#       #}
+{#        {% endif %}#}
+
+{% endfor %}
+</ul>
+

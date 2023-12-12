@@ -1,0 +1,48 @@
+// main: ../main.scss
+
+.subnav-container {
+
+  .subnav-panel {
+    // position: absolute;
+    // visibility: hidden;
+    // height: 0;
+    display: none;
+    opacity: 0;
+    animation: panelFadeIn .4s forwards;
+
+    &.visible {
+      // position: static;
+      // visibility: visible;
+      // height: auto;
+      display: inherit;
+    }
+  }
+}
+
+// .js-subnav {
+//
+//   .subnav-panel {
+//     display: none;
+//     opacity: 0;
+//     animation: panelFadeIn .4s forwards;
+//
+//     &.hidden {
+//       display: none;
+//     }
+//   }
+//
+//   &.is-initialized .subnav-panel {
+//     display: inherit;
+//
+//     &.hidden {
+//       display: none;
+//     }
+//   }
+//
+// }
+
+@keyframes panelFadeIn {
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,32 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+<!-- Text block - 1 -->
+<div class="wrapper-section p-top-4 p-bottom-8">
+    <div class="grid-container">
+
+        <article class="wysiwyg-block wysiwyg">
+            {{ fields.wysiwyg }}
+        </article>
+
+    </div>
+
+</div>
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

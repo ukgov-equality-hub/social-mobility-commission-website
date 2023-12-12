@@ -1,0 +1,37 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+        <!-- Author -->
+        <div class="wrapper-section p-top-9 p-bottom-9">
+            <div class="grid-container">
+                <div class="author-block">
+                    {% set TImg = Image(fields.image) %}
+                    {% set altOverride = "author" %}
+                    {% set srcset = TImg.src|resize(150) ~ ' 1024w, ' ~ TImg.src|resize(150) ~ ' 300w,' %}
+                    {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'author-img'} )  }}
+                    <p class="author-name">{{ fields.name }}</p>
+                    <ul class="meta-items">
+                        <li>{{ fields.meta_1 }}</li>
+                        <li>{{ fields.meta_2 }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

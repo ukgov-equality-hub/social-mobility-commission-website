@@ -1,0 +1,18 @@
+<nav id="{{ navID }}" class="{{ navclass|default('') }}">
+    <ul class=" {{ ulclass|default("nav-main") }}">
+        {% for item in menu.items %}
+            <li class="nav-main-item {{ item.classes|join(' ') }}">
+                {% include 'fragments/anchor.twig' with { 'link': item } %}
+                {% if item.children %}
+                    <ul class="nav-drop">
+                        {% for child in item.children %}
+                            <li class="nav-drop-item">
+                                {% include 'fragments/anchor.twig' with { 'link': child } %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

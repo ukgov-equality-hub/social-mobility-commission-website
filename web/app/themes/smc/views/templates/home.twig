@@ -1,0 +1,7 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+{% endblock %}

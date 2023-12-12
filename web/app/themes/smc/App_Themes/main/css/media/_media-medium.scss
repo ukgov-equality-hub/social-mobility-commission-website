@@ -1,0 +1,19 @@
+﻿/* Medium and up */
+@media screen and (min-width: 40em) {}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+
+  .work-card {
+    height: auto !important;
+  }
+}
+
+/* Medium  iphone landscape only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) and (orientation: landscape) {}
+
+/* max-width 640px, mobile-only styles and landscape */
+@media only screen and (min-width: 40.063em) and (max-width: 1024px) and (orientation: landscape) {}
+
+/* ipad pro */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {}

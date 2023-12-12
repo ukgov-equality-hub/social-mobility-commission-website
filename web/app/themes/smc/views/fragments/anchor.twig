@@ -1,0 +1,10 @@
+{% if link is not empty %}
+    <a href="{% if href %}{{ href }}{% else %}{{ link.url }}{% endif %}"
+        {% if link.target is not empty %}
+            target="{{ link.target }}"
+        {% endif %}
+       class="{% if aclass %}{{ aclass }}{% else %}{{ classes }}{% endif %}"
+       {% if role is defined and role is not empty %} role="{{ role }}" {% endif %}
+    >{{ link.title }}
+    </a>
+{% endif %}

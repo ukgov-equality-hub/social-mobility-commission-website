@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+    {{ include('fragments/intro-text.twig', {text:text}) }}
+
+    <!-- Cards -->
+    <div class="wrapper-section p-bottom-5">
+        <div class="grid-container">
+
+            <div class="text-center">
+                <p class="headline-3 m-bottom-7">{{ page.subtitle }}</p>
+            </div>
+
+            <div class="grid-x grid-padding-x large-up-3 medium-up-2">
+                {% for card in cpt %}
+                    {% set post = Post(card) %}
+                <div class="cell">
+                    <a class="feature-card m-bottom-9" href="{{ post.link }}">
+                        <div class="inner">
+                            {% set TImg = Image(post.thumbnail) %}
+                            {% set srcset = TImg.src|resize(420) ~ ' 1024w, ' ~ TImg.src|resize(420) ~ ' 300w,' %}
+                            {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
+                            <div class="content">
+                                <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
+                                {% if card.post_type == "events" %}
+                                    <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                {% endif %}
+                                <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>
+                                <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {{ include('components/pagination.twig', {posts:cpt}) }}
+
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+
+{% endblock %}

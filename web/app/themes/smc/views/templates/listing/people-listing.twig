@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+    {{ include('fragments/intro-text.twig', {text:text}) }}
+
+<!-- Bio Cards -->
+<div class="wrapper-section p-top-9 p-bottom-7">
+    <div class="grid-container">
+
+
+        <div class="grid-x grid-padding-x large-up-3 medium-up-2">
+            {% for person in people %}
+            <div class="cell">
+                <div class="bio-card m-bottom-8">
+
+                    {% set post = Post(person) %}
+                    {% set TImg = Image(post.thumbnail) %}
+                    {% set altOverride = "profile photo of person" %}
+                    {% set srcset = TImg.src|resize(450) ~ ' 1024w, ' ~ TImg.src|resize(450) ~ ' 300w,' %}
+                    {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
+                    <div class="content">
+                        <p class="headline-3 m-bottom-1">{{ person.name }}</p>
+                        <p class="headline-4 m-bottom-5">{{ person.job_title }}</p>
+                        <div class="more-text">
+                            <p>{{ person.text }}</p>
+                        </div>
+                        <button class="cta-more-less" type="button">Read more</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    {{ include('components/pagination-people.twig', {people:people}) }}
+
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+
+{% endblock %}

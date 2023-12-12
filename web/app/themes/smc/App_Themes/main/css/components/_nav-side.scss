@@ -1,0 +1,159 @@
+// main: ../main.scss
+
+/* aside nav */
+.cta-nav-side {
+  position: relative;
+  display: block;
+  padding: .7rem 2.5rem .9rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1;
+  width: 100%;
+  color: $col-dark-grey;
+  text-align: left;
+  border: 1px solid $col-dark-grey;
+  border-radius: $border-radius-2;
+  margin-bottom: .75rem;
+
+  &:after {
+    content: "\e902";
+    font-family: $font-icon;
+    font-size: 1.25rem;
+    color: $col-dark-grey;
+    position: absolute;
+    right: 1rem;
+    top: .75rem;
+    transition: .2s;
+  }
+
+  &.is-active {
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover, &:focus {
+    color: $col-dark-grey;
+  }
+}
+
+
+.nav-submenu {
+  margin-left: 0;
+  list-style: none;
+
+  a {
+    position: relative;
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.11;
+    color: $col-dark-grey;
+    padding: 1.125rem 1rem 1.25rem 1.25rem;
+    border-radius: 0 $border-radius-2 $border-radius-2 0;
+    transition: .3s ease-out;
+
+    &:before {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 4px;
+      background-color: $col-dark-grey;
+      transition: .15s ease-out;
+    }
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+
+    &.is-active {
+      background-color: $col-light-blue;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.is-open {
+	  display: block;
+	  animation: sideMenuOpen .3s linear forwards;
+	}
+}
+
+@keyframes sideMenuOpen {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Medium - Media Query */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+
+  .toggle-panel {
+    display: none;
+  }
+
+  .nav-submenu {
+    border: 1px solid $col-dark-grey;
+    border-radius: $border-radius-2;
+    padding-top: .5rem;
+    padding-bottom: .75rem;
+
+    a {
+      font-size: 1rem;
+      font-weight: 400;
+      padding: .75rem 2rem .75rem 1rem;
+
+      &:after {
+        content: "\e910";
+        font-family: $font-icon;
+        font-size: 1.25rem;
+        color: $col-dark-grey;
+        position: absolute;
+        right: 1rem;
+        top: .65rem;
+      }
+    }
+  }
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+  .toggle-panel {
+    display: none;
+  }
+
+  .nav-submenu {
+    border: 1px solid $col-dark-grey;
+    border-radius: $border-radius-2;
+    padding-top: .5rem;
+    padding-bottom: .75rem;
+
+    a {
+      font-size: 1rem;
+      font-weight: 400;
+      padding: .75rem 2rem .75rem 1rem;
+
+      &:after {
+        content: "\e910";
+        font-family: $font-icon;
+        font-size: 1.25rem;
+        color: $col-dark-grey;
+        position: absolute;
+        right: 1rem;
+        top: .65rem;
+      }
+    }
+  }
+
+}

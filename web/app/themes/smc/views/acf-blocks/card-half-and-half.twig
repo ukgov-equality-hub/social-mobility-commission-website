@@ -1,0 +1,46 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+        <!-- What is social mobility -->
+        <div class="wrapper-section bold-gradient p-top-10 p-bottom-10">
+            <div class="grid-container">
+
+                <div class="split-content-block">
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell medium-6 medium-order-1 small-order-2 align-self-middle">
+                            <div class="content">
+                                <h2 class="display-3 m-bottom-7">{{ fields.title }}</h2>
+                                <p class="body-large m-bottom-7">{{ fields.content }}</p>
+                                <a class="btn-primary" href="{{ fields.link.url }}">
+                                    <span>{{ fields.link.title }}</span>
+                                    <span class="show-for-sr">{{ fields.link.title }} button</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cell medium-6 medium-order-2 small-order-1">
+                            {% set TImg = Image(fields.image) %}
+                            {% set altOverride = "Card Side Image" %}
+                            {% set srcset = TImg.src|resize(640) ~ ' 1024w, ' ~ TImg.src|resize(640) ~ ' 300w,' %}
+                            {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,67 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+    {{ include('fragments/intro-text.twig', {text:text}) }}
+
+    <!-- Cards -->
+    <div class="wrapper-section p-bottom-5">
+        <div class="grid-container">
+
+            <div class="text-center">
+                <p class="headline-3 m-bottom-7">{{ page.subtitle }}</p>
+            </div>
+            <!-- Toggle filter -->
+            <div class="wrapper-section p-bottom-9">
+                <div class="grid-container">
+
+                    <form id="toggles"action="{{ fn('get_the_permalink') }}" method="get" aria-label="form-for-filtering">
+                    <ul class="toggle-filter-list">
+                        <li><button class="btn-primary btn-primary--text {% if selected == "all" or not selected %}active{% endif %}"value="all"  name="selected" ><span>All</span></button></li>
+                        {% for cpt in cpts %}
+                            <li><button class="btn-primary btn-primary--text {% if selected == cpt.value %}active{% endif %}"value="{{ cpt.value }}"name="selected" ><span>{{ cpt.label }}</span></button></li>
+                        {% endfor %}
+                        {% for link in links %}
+                            <li><a class="btn-primary btn-primary--text " href="{{ link.link.url }}" ><span>{{ link.link.title }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                    </form>
+                </div>
+            </div>
+
+            <div class="grid-x grid-padding-x large-up-3 medium-up-2">
+                {% for card in posts %}
+                    {% set post = Post(card) %}
+
+                <div class="cell">
+                    <a class="feature-card m-bottom-9" href="{{ post.link }}">
+                        <div class="inner">
+                            {% set TImg = Image(post.thumbnail) %}
+                            {% set srcset = TImg.src|resize(420) ~ ' 1024w, ' ~ TImg.src|resize(420) ~ ' 300w,' %}
+                            {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
+                            <div class="content">
+                                <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
+                                {% if card.post_type == "events" %}
+                                    <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                {% endif %}
+                                <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>
+                                <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {{ include('components/pagination.twig', {posts:posts}) }}
+
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+
+{% endblock %}

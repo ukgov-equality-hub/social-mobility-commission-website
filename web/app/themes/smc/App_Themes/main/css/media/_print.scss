@@ -1,0 +1,32 @@
+﻿// main: ../main.scss
+
+@media print {
+
+	/*custom*/
+
+	* {
+		animation: none !important;
+		animation-duration: 0s !important;
+		animation-delay: 0s !important;
+	}
+
+	.aos-init,
+	.aos-animate {
+		opacity: 1 !important;
+		transform: none !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+		transition-property: none !important;
+	}
+
+	.print-full {
+		width: 100%;
+		display: block;
+	}
+
+	.wrapper-header,
+	.wrapper-footer {
+		display: none;
+	}
+
+}

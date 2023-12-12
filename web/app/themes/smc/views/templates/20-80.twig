@@ -1,0 +1,65 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+<div class="wrapper-section p-top-10 p-bottom-11">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+
+
+                <div class="cell large-4 sticky-container">
+                    <div class="sticky-elem">
+                        <p class="headline-4 m-bottom-4">On this page</p>
+                        <a id="btnSideMenu" class="cta-nav-side cta-toggle-panel hide-for-large" href="javascript:;">Jump to section</a>
+                        <nav aria-label="Page Sub Navigation">
+                            <ul id="pnlSideMenu" class="nav-submenu m-bottom-8 toggle-panel">
+                                <!-- Dynamic list -->
+                            </ul>
+                        </nav>
+                        <!-- Share - Desktop only -->
+                        <div class="show-for-large">
+                            <p class="headline-4 m-bottom-4">Share</p>
+                            <ul class="social-share align-left">
+                                <li><a href="{{ options.twitter_url }}" aria-label="Twitter"><span class="szicon-twitter"></span></a></li>
+                                <li><a href="{{ options.instagram_url }}" aria-label="Instagram"><span class="szicon-instagram"></span></a></li>
+                                <li><a href="{{ options.linkedin_url }}" aria-label="LinkedIn"><span class="szicon-linked-in"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="cell large-8 submenu-sections">
+                {{ page.content | raw }}
+            </div>
+            <script>
+                //get divs and header content
+                const jumpSectionDiv = document.querySelectorAll('.jump-section');
+                const sectionTitleContentArray = document.querySelectorAll('.section-title');
+                const randChecker = [];
+                //loop through all titles gathered.
+                for(let i=0; i<=sectionTitleContentArray.length; i++){
+                     const r = randCreator(randChecker, i);
+                     //assign unique ID based off of header and unique number
+                    jumpSectionDiv[i].id = sectionTitleContentArray[i].innerHTML + r[i];
+                }
+                //create random numbers
+                function randCreator(randChecker, i) {
+                    var r = Math.floor(Math.random() * 1000) + 1;
+                    //ensure number unique by checking if it has already been added to array of used numbers.
+                    if(randChecker.includes(r)){
+                        //if used then re-run rand
+                        randCreator(randChecker, i);
+                    }else{
+                        //else add to used array.
+                        randChecker[i] = [r];
+                    }
+                    return randChecker ;
+                }
+            </script>
+        </div>
+    </div>
+</div>
+    {% include 'fragments/related.twig' %}
+
+{% endblock %}

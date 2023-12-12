@@ -1,0 +1,23 @@
+<!-- Wrapper hero - default -->
+<div class="wrapper-hero {% if page.wrapper_colour == "1" %} light-orange{% endif%} p-top-9 p-bottom-9">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="cell medium-6 align-self-middle">
+                <div class="content">
+                    <h1 class="display-3">{{ page.wrapper_hero_title }}</h1>
+                </div>
+            </div>
+            <div class="cell medium-6">
+                {% if fn('is_404') %}
+                    {% set TImg = Image(options.not_found_page_hero_image) %}
+                {% else %}
+                    {% set TImg = Image(page.wrapper_hero_wrapper_image) %}
+                {% endif %}
+                {% set srcset = TImg.src|resize(640) ~ ' 1024w, ' ~ TImg.src|resize('640') ~ ' 300w,' %}
+                {{ include( 'fragments/img.twig', {srcset:srcset, class:'img'} )  }}
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,36 @@
+{#  Expects a TimerImage object and expects to use WP Smart Crop
+
+    This is so the Image will scale and flow responsively.
+    This fragment will check for the presence of focal point positioning
+
+    Fragment Parameters
+
+    TImg (Timber Image) - required
+    class : defaults to size-large wpsmartcrop-image is always added.
+    srcset: optional defaults to [{{ TImage.src }}, 1024w] ,[{{ TImage.src|resize('large')|tojpg }}, 768w],[{{ TImage.src|resize('medium') }}, 300w]
+    sizes: defaults to (max-width: 1200px) 100vw, 1200px
+    loading: defaults to lazy
+
+    EXAMPLE:
+
+    {% set HeroImg =  Image(page.hero_image) %}
+    {% set srcset= HeroImg.src|fallback|resize(1587)|safeTowebp ~  ' 1587w, ' ~ HeroImg.src|fallback|resize(800)|safeTowebp ~ ' 800w, ' ~ HeroImg.src|fallback|resize(640)|safeTowebp ~ ' 640w' %}
+    {{ include('fragments/img.twig',{ 'TImg': HeroImg, 'class':' hero-img hide-for-small-only ', 'loading': 'lazy', 'srcset': srcset }) }}
+#}
+
+{% set pos = TImg.meta('_wpsmartcrop_image_focus')%}
+<img {% apply spaceless %}
+    src="{{ TImg.src|fallback|resize(640)|safeTowebp }}"
+    alt="{% if altOverride %}{{ altOverride }}{% else %}{{ TImg.alt }}{% endif %}"
+    srcset="{% if srcset is defined and srcset is not empty %}{{ srcset }}{% else %}
+{{ TImg.src }} 1024w,
+{{ TImg.src|resize('large') }} 768w,
+{{ TImg.src|resize('medium') }} 300w,
+{% endif %}"
+    class="wpsmartcrop-image {% if class is defined and class is not empty %}{{ class }}{% else %} size-large {% endif %}"
+    sizes="{% if sizes is defined and sizes is not empty %}{{ sizes }}{% else %}(max-width: 1200px) 100vw, 1200px{% endif %}"
+    loading="{{ loading|default('lazy') }}"
+    {% if pos is not empty %} data-smartcrop-focus="[{{ pos.left|default('50') }},{{ pos.top|default('33') }}]" {% endif %}
+{% endapply %}
+/>
+

@@ -1,0 +1,47 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+        <!-- Statistics -->
+        <div class="wrapper-section light-teal p-top-11 p-bottom-4">
+            <div class="grid-container">
+
+                <div class="grid-x grid-padding-x large-up-3 medium-up-3">
+                    {% for stat in fields.stats %}
+                    <div class="cell">
+{#                        {{ dump(stat.percentage ) }}#}
+                        <div class="circle-chart m-bottom-8" data-percentage="{{ stat.percentage }}">
+                            <svg height="200" width="200" viewPort="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="outer-bar" r="90" cx="100" cy="100" pathLength="100"></circle>
+                                <circle class="bar" r="90" cx="100" cy="100" pathLength="100"></circle>
+                                <circle class="outer-progress-bar" r="90" cx="100" cy="100" pathLength="100"></circle>
+                                <circle class="progress-bar" r="90" cx="100" cy="100" pathLength="100"></circle>
+                                <text class="percentage" x="50%" y="56%" text-anchor="middle"></text>
+                            </svg>
+                            <p class="body-small">{{ stat.text }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+{#                    <svg xmlns="http://www.w3.org/2000/svg"></svg>#}
+
+                </div>
+
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

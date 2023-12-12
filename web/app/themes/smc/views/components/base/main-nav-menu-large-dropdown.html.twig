@@ -1,0 +1,64 @@
+<nav id="{{ navID }}" class="{{ navclass|default('') }}">
+    <ul class=" {{ ulclass|default("nav-main") }}">
+
+        {% for item in menu.items %}
+            {% set count = loop.index - 1 %}
+            {% set card = options.navigation_cards[count] %}
+
+            <li class="nav-main-item {{ item.classes|join(' ') }}">
+                <a class="nav-item label-medium" href="#">{{ item.title }}</a>
+                <div class="dropdown-panel">
+                    <div class="grid-container">
+                        <div class="grid-x grid-padding-x medium-up-3">
+                            <div class="cell">
+                                {% if card %}
+                                    <p class="sub-nav-header m-bottom-7"><a href="{{ card.link.url }}">
+                                            <img class="icon" src="{{ card.icon.url }}" loading="lazy" alt=""/>
+                                            {{ card.card_title }}</a></p>
+                                <p class="body-medium">{{ card.card_text }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="cell">
+{#                {% include 'fragments/anchor.twig' with { 'link': item } %}#}
+                                {% if item.children %}
+                                    <ul class="sub-nav js-subnav" >
+                                        {% for child in item.children %}
+{#                                            {{ dump(child) }}#}
+                                            <li>
+                                                {% if child.children %}
+                                                    {% include 'fragments/anchor.twig' with { 'link': child, 'aclass':'label-medium-bold js-subnav-trigger', 'role':'tab', 'href': '#subnav' ~ child.post_name } %}
+                                                {% else %}
+                                                    {% include 'fragments/anchor.twig' with { 'link': child, 'aclass':'label-medium-bold' } %}
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                            <div class="cell subnav-container">
+                                {% for child in item.children %}
+                                    {% if child.children %}
+                                        <div id="subnav{{ child.post_name  }}" class="subnav-panel">
+                                            <ul class="sub-nav">
+                                                {% for subChild in child.children %}
+                                                <li><a class="label-medium" href="">Research, policies and reports</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+<!-- Mobile menu button -->
+<button aria-label="Mobile Navigation Toggle" aria-expanded="false" class="toggle-menu hamburger hamburger--elastic hide-for-large" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+</button>
+

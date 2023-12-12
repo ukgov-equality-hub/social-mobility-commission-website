@@ -1,0 +1,20 @@
+{% extends "templates/full.twig" %}
+
+{% block content %}
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+            <span class="status-code">{{ exception.code|default(500) }}</span>
+            <h1 class="page-title">
+                {% if exception.reason is defined and  exception.reason is not null %}
+                    {{ __(exception.reason,'app') }}
+                {% else %}
+                    Something went <span class="text-highlight">wrong</span>
+                {% endif %}
+            </h1>
+            <p class="status-message">Please try again in a few minutes, if the error persists contact us for support.</p>
+            <div>
+                {% include 'views/fragments/anchor.twig' with {'link' : site.link} %}
+            </div>
+    </div>
+</div>
+{% endblock %}

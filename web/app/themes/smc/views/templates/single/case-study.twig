@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if text %}
+        {{ include('fragments/intro-text.twig', {text:text}) }}
+    {% endif %}
+    {% if fields.add_author %}
+        {{ include('fragments/author.twig', {fields:fields}) }}
+    {% endif %}
+    {% if badges %}
+        {{ include('fragments/case-study-badges.twig', {badges:badges}) }}
+    {% endif %}
+
+    {#<div class="grid-container">#}
+    {#    <div class="grid-x grid-padding-x">#}
+    {#        <article>#}
+    {{ page.content | raw }}
+    {#        </article>#}
+    {#    </div>#}
+    {#</div>#}
+    {% include 'fragments/related.twig' %}
+{% endblock %}

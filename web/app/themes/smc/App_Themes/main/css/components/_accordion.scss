@@ -1,0 +1,135 @@
+// main: ../main.scss
+
+.accordion {
+  border-bottom: 1px solid #ccc;
+
+  .accordion-item {
+
+    .accordion-button {
+      cursor: pointer;
+      position: relative;
+      width: 100%;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: .8rem 2rem .9rem .25rem;
+      border-top: 1px solid #ccc;
+      transition: background-color .3s;
+
+      &:after {
+        content: "\e902";
+        font-family: $font-icon;
+        font-size: 1rem;
+        position: absolute;
+        right: .8rem;
+        top: .9rem;
+        transition: transform .2s;
+      }
+
+      &:hover, &:focus {
+        background-color: rgba(#ccc,.25);
+      }
+
+      &.active {
+        &:after {
+          transform: rotate(180deg);
+        }
+      }
+
+    }
+
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      transition-duration: .4s;
+      transition-property: max-height, visibility;
+    }
+
+    .inner-panel {
+      padding: .25rem;
+    }
+
+  }
+
+  .accordion-panel {
+    &.open {
+      visibility: visible;
+      max-height: initial;
+      transition-duration: .4s;
+      transition-property: max-height, visibility;
+    }
+  }
+
+  &--contact {
+
+    .accordion-item {
+      border-top: $border-width-1 solid $col-grey;
+
+      &:last-child {
+        border-bottom: $border-width-1 solid $col-grey;
+      }
+
+      .accordion-button {
+        text-align: center;
+        font-size: 2.25rem;
+        font-weight: 700;
+        padding: 1.9rem 0 2.2rem;
+
+        &:after {
+          top: 2rem;
+          right: unset;
+          font-size: 2.2rem;
+          font-weight: normal;
+          margin-left: 1.5rem;
+        }
+
+        &:hover, &:focus {
+          background-color: transparent;
+        }
+
+      }
+    }
+
+  }
+}
+
+/* Medium - Media Query */
+@media screen and (min-width: 48em) and (max-width: 89.9375em) {
+
+  .accordion {
+    &--contact {
+      .accordion-item {
+        .accordion-button{
+          font-size: 2rem;
+
+          &:after {
+            top: 1.9rem;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+  .accordion {
+    &--contact {
+      .accordion-item {
+        .accordion-button{
+          font-size: 1.5rem;
+
+          &:after {
+            // top: 1.9rem;
+            font-size: 1.5rem;
+            margin-left: .5rem;
+          }
+        }
+      }
+    }
+  }
+
+}

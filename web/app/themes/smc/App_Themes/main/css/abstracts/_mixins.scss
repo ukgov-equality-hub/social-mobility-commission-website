@@ -1,0 +1,137 @@
+﻿/*
+FADER: 
+/////////////////////////////
+.link {
+	@include fader;
+}
+*/
+
+@mixin fader {
+	transition: opacity 0.3s;
+	opacity: 1;
+
+	&:hover,
+	&:focus {
+		opacity: 0.8;
+	}
+}
+
+/*
+HOVER LIFT:
+/////////////////////////////
+.card {
+	@include hover-lift;
+}
+*/
+
+@mixin hover-lift() {
+	transition: transform .3s, box-shadow .3s;
+
+	&:hover,
+	&:focus {
+		transform: translateY(-3px);
+		box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+	}
+}
+
+/*
+INPUT PLACEHOLDER:
+/////////////////////////////
+input,
+textarea {
+	@include input-placeholder {
+		color: #000;
+	}
+}
+*/
+
+@mixin input-placeholder {
+	&.placeholder {
+		@content;
+	}
+
+	&:-moz-placeholder {
+		@content;
+	}
+
+	&::-moz-placeholder {
+		@content;
+	}
+
+	&:-ms-input-placeholder {
+		@content;
+	}
+
+	&::-webkit-input-placeholder {
+		@content;
+	}
+}
+
+/*
+PSEUDO HANDLER:
+/////////////////////////////
+.card {
+	@include pseudo(after);
+	@include pseudo(before, $top: 50px) {
+		background-color: red;
+	}
+}
+*/
+
+@mixin pseudo($loc: before, $content: '', $pos: absolute, $top: false, $bottom: false, $left: false, $right: false) {
+	position: relative;
+
+	&::#{$loc} {
+		content: $content;
+		position: $pos;
+
+		@if $top {
+			top: $top
+		}
+
+		@if $bottom {
+			bottom: $bottom
+		}
+
+		@if $left {
+			left: $left
+		}
+
+		@if $right {
+			right: $right
+		}
+
+		@content;
+	}
+}
+
+/*
+BG IMAGE HANDLER:
+/////////////////////////////
+.element {
+	@include bg-img(top center, cover)
+}
+*/
+
+@mixin bg-img($pos: center, $size: cover) {
+	background-position: $pos;
+	background-repeat: no-repeat;
+	background-size: $size;
+}
+
+/*
+focus-accessibility:
+/////////////////////////////
+.element {
+	@include focus-access;
+}
+*/
+@mixin focus-access() {
+	&:focus {
+		color: $col-text-main;
+		background-color: $col-focus-outline;
+		box-shadow: 0 -2px $col-focus-outline, 0 4px $col-text-main !important;
+		outline: transparent;
+		opacity: 1;
+	}
+}

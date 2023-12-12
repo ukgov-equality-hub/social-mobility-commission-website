@@ -1,0 +1,23 @@
+{% extends "templates/full.twig" %}
+
+{% block content %}
+    <div class="wrapper-section wrapper-section--shallow">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x align-center">
+                <div class="medium-12 small-12 align-self-middle cell">
+                    <h2 class="status-code">404</h2>
+                </div>
+                <div class="medium-12 small-12 align-self-middle cell">
+                    <h2 class="page-title">Oops <span class="text-highlight">page not found</span></h2>
+                    <h4 class="status-message">
+                        We are very sorry for the inconvenience. It looks like you are trying to access a page that either has been
+                        deleted or never existed.
+                    </h4>
+                </div>
+                <div>
+                    {% include 'views/fragments/anchor.twig' with {'link' : {"url":site.link, "title":'Back to the homepage'}} %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

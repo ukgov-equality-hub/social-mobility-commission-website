@@ -1,0 +1,16 @@
+{# This Fragment is used for outputting an image as a background within an empty DIV
+   This is so the Image will scale and flow responsively.
+   This fragment will check for the presence of focal point positioning
+
+    Fragment Parameters
+
+    TImage (Timber Image) - required
+    class : defaults to bg-image
+    srcset: optional defaults to [{{ TImage.src|resize('medium')|tojpg }}, small] ,[{{ TImage.src|resize('large')|tojpg }}, medium],[{{ TImage.src|tojpg }}, large]
+    addstyles: optional - additional inline style rules
+#}
+{% set pos = TImage.meta('_wpsmartcrop_image_focus')%}
+<div class="{{ class|default('bg-image') }}"
+     data-interchange="{% if srcset is defined and srcset is not null %}{{ srcset }}{% else %}[{{ TImage.src|resize('medium')|tojpg }}, small] ,[{{ TImage.src|resize('large')|tojpg }}, medium],[{{ TImage.src|tojpg }}, large]{% endif %}"
+     style="background-position:{{ pos.left|default(50) }}%  {{ pos.top|default(33) }}% ; {{ addstyles|default('') }};  )"
+></div>

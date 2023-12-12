@@ -1,0 +1,133 @@
+// main: ../main.scss
+
+.wrapper-footer {
+  background-color: $col-dark-grey;
+
+  .footer-logo {
+    max-height: 72px;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, li, a {
+    color: $col-white;
+  }
+
+  .footer-menu {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+      margin-bottom: .75rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        display: inline-block;
+
+        &:hover, &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footer-social {
+    list-style: none;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 1.25rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        display: inline-block;
+        font-size: 1.5rem;
+        transition: .3s ease-out;
+
+        &:hover, &:focus {
+          color: $col-light-teal;
+        }
+      }
+    }
+  }
+}
+
+.wrapper-base {
+  background-color: $col-dark-grey;
+  border-top: $border-width-1 solid $col-white;
+
+  .base-menu {
+    list-style: none;
+    margin: 0;
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin-right: 1.875rem;
+
+      &:after {
+        content: '';
+        height: 6px;
+        width: 6px;
+        background-color: $col-white;
+        border-radius: 50%;
+        position: absolute;
+        right: -1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:last-child {
+        margin-right: 0;
+        &:after {
+          display: none;
+        }
+      }
+
+      a {
+        display: inline-block;
+
+        &:hover, &:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p, a {
+    color: $col-white;
+  }
+}
+
+/* Medium - Media Query */
+@media screen and (min-width: 48em) and (max-width: 89.9375em) {
+
+  .wrapper-base {
+    .base-menu {
+      margin-bottom: .7rem;
+    }
+  }
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+  .wrapper-footer {
+    .headline-5 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .wrapper-base {
+    .base-menu {
+      margin-bottom: .7rem;
+    }
+  }
+
+}

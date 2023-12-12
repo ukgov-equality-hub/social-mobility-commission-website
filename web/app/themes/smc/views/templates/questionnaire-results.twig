@@ -1,0 +1,75 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <!-- Results -->
+    <div class="wrapper-section p-top-10 p-bottom-10">
+        <div class="grid-container">
+
+            <div class="section-title-block m-bottom-10">
+                <h2 class="results-title m-bottom-6">Your score indicates you’re at: <br /><strong>{{ fields.levels.title }}</strong></h2>
+                <p class="body-large">{{ fields.levels.text }}</p>
+            </div>
+
+            <!-- Stages -->
+            <div class="slider-progress-bar stage-{% if fields.levels.title == "Foundational" %}1{% elseif fields.levels.title == "Developing"%}2{% elseif fields.levels.title == "Optimising"%}3{% endif%} m-bottom-10">
+                <p class="tooltip">Your business is here</p>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="stages">
+                    <span class="label-small-bold">Foundational</span>
+                    <span class="label-small-bold">Developing</span>
+                    <span class="label-small-bold">Optimising</span>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="headline-4 m-bottom-6">Share</p>
+                <ul class="social-share">
+                    <li><a href="" aria-label="Instagarm"><span class="szicon-instagram"></span></a></li>
+                    <li><a href="" aria-label="LinkedIn"><span class="szicon-linked-in"></span></a></li>
+                    <li><a href="" aria-label="Twitter"><span class="szicon-twitter"></span></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- What next -->
+    {% if  fields.whats_next.toggle %}
+    <div class="wrapper-section light-blue p-top-10 p-bottom-9">
+        <div class="grid-container">
+
+            <div class="section-title-block m-bottom-10">
+                <h3 class="headline-1 m-bottom-6">{{ fields.whats_next.title }}</h3>
+                <p class="body-large">{{ fields.whats_next.text }}</p>
+            </div>
+
+            <div class="grid-x grid-padding-x large-up-3 medium-up-2">
+                {% for card in fields.whats_next.cards %}
+                <div class="cell">
+                    <a class="feature-card m-bottom-9" href="{{ card.link.url }}">
+                        <div class="inner">
+                            {% set TImg = Image(card.image) %}
+                            {% set altOverride =  card.override_alt %}
+                            {% set srcset = TImg.src|resize(300) ~ ' 1024w, ' ~ TImg.src|resize(300) ~ ' 300w,' %}
+                            {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
+                            <div class="content">
+                                <h2 class="headline-3 m-bottom-4">{{ card.title }}</h2>
+                                <p class="body-small m-bottom-6">{{ card.text }}</p>
+                                <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+{% endblock %}

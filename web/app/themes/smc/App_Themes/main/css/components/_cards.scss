@@ -1,0 +1,402 @@
+// main: ../main.scss
+
+.feature-card {
+  display: block;
+  background-color: $col-dark-grey;
+  border-radius: $border-radius-4;
+
+  .inner {
+    position: relative;
+    background-color: $col-white;
+    border: $border-width-1 solid $col-dark-grey;
+    border-radius: $border-radius-4;
+    transition: .3s linear;
+  }
+
+  .date {
+    color: $col-grey;
+  }
+
+  .img {
+    height: 216px;
+    width: 100%;
+    border-radius: $border-radius-4 $border-radius-4 0 0;
+    border-bottom: $border-width-1 solid $col-dark-grey;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .category {
+    position: absolute;
+    top: 1.125rem;
+    right: 1.125rem;
+    padding: .5rem 1.25rem .75rem;
+    background-color: $col-light-pink;
+    border: $border-width-1 solid $col-dark-grey;
+    border-radius: $border-radius-5;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+
+  &:hover, &:focus {
+    color: $col-dark-grey;
+
+    .inner {
+      transform: translateY(-8px);
+      background-color: $col-light-grey;
+    }
+
+    .btn-secondary {
+
+      span {
+        color: $col-dark-grey;
+
+        &:after {
+          height: $border-width-3;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: $col-dark-grey auto 3px;
+    outline-offset: 1px;
+  }
+}
+
+.help-card {
+  display: block;
+  background-color: $col-dark-grey;
+  border-radius: $border-radius-4;
+
+  .inner {
+    display: flex;
+    min-height: 150px;
+    align-items: center;
+    background-color: $col-light-blue;
+    border: $border-width-1 solid $col-dark-grey;
+    border-radius: $border-radius-4;
+    padding: 1.65rem 1.5rem;
+    transition: .3s linear;
+  }
+
+  .img {
+    height: 96px;
+  }
+
+  .content {
+    padding-left: 1rem;
+  }
+
+  &:hover, &:focus {
+    color: $col-dark-grey;
+
+    .inner {
+      transform: translateY(-8px);
+    }
+
+    .btn-secondary {
+
+      span {
+        color: $col-dark-grey;
+
+        &:after {
+          height: $border-width-3;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: $col-dark-grey auto 3px;
+    outline-offset: 1px;
+  }
+}
+
+.work-card {
+  display: block;
+  background-color: $col-dark-grey;
+  border-radius: $border-radius-4;
+
+  .inner {
+    text-align: center;
+    background-color: $col-light-pink;
+    border: $border-width-1 solid $col-dark-grey;
+    border-radius: $border-radius-4;
+    padding: 2.5rem 2rem;
+    transition: .3s linear;
+  }
+
+  .img {
+    height: 96px;
+  }
+
+  &:hover, &:focus {
+    color: $col-dark-grey;
+
+    .inner {
+      transform: translateY(-8px);
+    }
+
+    .btn-secondary {
+
+      span {
+        color: $col-dark-grey;
+
+        &:after {
+          height: $border-width-3;
+        }
+      }
+    }
+  }
+
+  &:focus {
+    outline: $col-dark-grey auto 3px;
+    outline-offset: 1px;
+  }
+}
+
+.bio-card {
+  display: block;
+  border: $border-width-1 solid $col-dark-grey;
+  border-radius: $border-radius-4;
+
+  &.active {
+    border-width: $border-width-3;
+  }
+
+  .img {
+    height: 216px;
+    width: 100%;
+    border-bottom: $border-width-1 solid $col-dark-grey;
+    border-radius: $border-radius-4 $border-radius-4 0 0;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .content {
+    padding: 1.8rem 2rem;
+  }
+
+  .more-text {
+    // display: none;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition-duration: .4s;
+    transition-property: max-height, visibility;
+
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    &.expanded {
+      visibility: visible;
+      max-height: initial;
+      transition-duration: .4s;
+      transition-property: max-height, visibility;
+    }
+  }
+
+  .cta-more-less {
+    position: relative;
+    display: inline-block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-bottom: 1px solid $col-dark-grey;
+    padding-bottom: .25rem;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
+
+    &:after {
+      content: "\e902";
+      font-family: $font-icon;
+      font-weight: normal;
+      position: absolute;
+      right: -1.5rem;
+      top: .1rem;
+      transition: .2s;
+    }
+
+    &.active {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.author-block {
+  max-height: 640px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  .author-img {
+    height: 96px;
+    width: 96px;
+    border: $border-width-1 solid $col-dark-grey;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .author-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: .25rem;
+  }
+
+  .meta-items {
+    list-style: none;
+    margin: 0;
+
+    li {
+      position: relative;
+      display: inline-block;
+      color: $col-grey;
+      font-size: 1.2rem;
+      margin: 0 .75rem;
+
+      &:after {
+        content: '';
+        height: 5px;
+        width: 5px;
+        background-color: $col-grey;
+        border-radius: 50%;
+        position: absolute;
+        right: -1.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:last-child:after {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Medium - Media Query */
+@media screen and (min-width: 48em) and (max-width: 89.9375em) {
+
+  .feature-card {
+    .img {
+      height: 200px;
+    }
+    .content {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .category {
+      top: .75rem;
+      right: .75rem;
+      padding: .3rem .75rem .5rem;
+    }
+  }
+
+  .help-card {
+    .inner {
+      padding: 1.5rem 1.25rem;
+    }
+    .content {
+      padding-left: .75rem;
+    }
+  }
+
+  .work-card {
+    .inner {
+      padding: 3.75rem 1rem;
+    }
+  }
+
+  .bio-card {
+    .content {
+      padding: 1.3rem 1.5rem;
+    }
+    .more-text {
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .author-block {
+    .author-name {
+      font-size: 1.125rem;
+    }
+    .meta-items {
+      li {
+        font-size: 1.05rem;
+      }
+    }
+  }
+
+}
+
+/* Small - Media Query */
+@media screen and (max-width: 47.9375em) {
+
+  .feature-card {
+    .img {
+      height: 170px;
+    }
+    .content {
+      padding: 1.5rem;
+    }
+    .category {
+      top: 1.125rem;
+      right: 1.125rem;
+      padding: .45rem .75rem .5rem;
+    }
+  }
+
+  .help-card {
+    .inner {
+      padding: 1.5rem 1.25rem;
+    }
+    .content {
+      padding-left: .75rem;
+    }
+  }
+
+  .work-card {
+    .inner {
+      padding: 1.25rem 1.25rem 1.75rem;
+    }
+  }
+
+  .bio-card {
+    .img {
+      height: 170px;
+    }
+    .content {
+      padding: 1.5rem;
+    }
+    .more-text {
+      p {
+        font-size: 1rem;
+      }
+    }
+    .cta-more-less {
+      font-size: 1rem;
+    }
+  }
+
+  .author-block {
+    .author-img {
+      height: 80px;
+      width: 80px;
+    }
+    .author-name {
+      font-size: 1.125rem;
+    }
+    .meta-items {
+      li {
+        font-size: 1.05rem;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,29 @@
+<a class="skip-to-content-link" href="#maincontent">Skip to main content</a>
+
+<header class="wrapper-header">
+
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+
+            <div class="cell large-5 medium-8 small-9">
+                <a class="logo" href="/">
+                    {% set TImg = Image(options.site_logo) %}
+                    {% set altOverride = "smc logo" %}
+                    {% set isLogo = true %}
+                    {% set srcset = TImg.src|resize(266, 0, 'center') ~ ' 1024w, ' ~ TImg.src|resize(266, 0, 'center') ~ ' 300w,' %}
+                    {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, 'isLogo': isLogo} )  }}
+                </a>
+            </div>
+
+            <div class="cell large-7 medium-4 small-3 text-right">
+                    <div class="nav-primary">
+                    {% include 'components/base/main-nav-menu-large-dropdown.html.twig' with { 'menu': main_nav,'navID':'dropdownNav', 'ulclass':'dropdown-nav no-js','navclass':'show-for-large' } %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% include 'components/base/main-mobile-nav-menu.html.twig' with { 'menu': main_nav,'navID':'pnlMobileNav', 'ulclass':'mobile-menu level-1','navclass':'wrapper-mobile-menu' } %}
+
+</header>
+</div>
