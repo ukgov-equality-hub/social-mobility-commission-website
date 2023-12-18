@@ -33,7 +33,7 @@ resource "aws_db_instance" "mysql_database" {
   // Networking
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group_for_mysql_db.name
   vpc_security_group_ids = [aws_security_group.security_group_database.id]
-  publicly_accessible = false
+  publicly_accessible = true
 
   // Upgrades
   auto_minor_version_upgrade = true
