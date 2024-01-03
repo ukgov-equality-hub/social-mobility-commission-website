@@ -9,6 +9,7 @@
     "composer/installers": "^1.10 || ^2.0",
     "ffraenz/private-composer-installer": "^5.0",
     "hellonico/timber-dump-extension": "^1.0",
+    "humanmade/s3-uploads": "^3.0",
     "oscarotero/env": "^2.1",
     "rareloop/lumberjack-core": "^5.0.1 || ^6.0",
     "rareloop/router": "^4.4 || ^6.0",
