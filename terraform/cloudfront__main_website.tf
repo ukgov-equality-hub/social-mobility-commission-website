@@ -12,7 +12,7 @@ resource "aws_cloudfront_cache_policy" "cloudfront_cache_policy__main_website" {
     headers_config {
       header_behavior = "whitelist"
       headers {
-        items = ["Authorization", "Host", "X-CSRFToken"]
+        items = ["Authorization", "Host", "X-CSRFToken", "X-WP-Nonce"]
       }
     }
     query_strings_config {
