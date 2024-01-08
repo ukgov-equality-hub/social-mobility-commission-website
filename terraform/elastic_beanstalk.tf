@@ -1,7 +1,7 @@
 
 locals {
   main_app_elastic_beanstalk_solution_stack_name = "64bit Amazon Linux 2023 v4.0.3 running PHP 8.1"
-  main_app_elastic_beanstalk_ec2_instance_type = "t4g.small"
+  main_app_elastic_beanstalk_ec2_instance_type = "t4g.medium"
 
   main_app_elastic_beanstalk_min_instances = 1
   main_app_elastic_beanstalk_max_instances = 2
