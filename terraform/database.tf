@@ -17,7 +17,7 @@ resource "aws_db_instance" "mysql_database" {
   engine_version = "8.0"
 
   // Sizing
-  instance_class = "db.t4g.micro"
+  instance_class = "db.t4g.medium"
   multi_az = false
   storage_type = "gp3"
   allocated_storage = 20
