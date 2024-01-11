@@ -20,10 +20,12 @@
                             <div class="content">
                                 <h2 class="display-3 m-bottom-7">{{ fields.title }}</h2>
                                 <p class="body-large m-bottom-7">{{ fields.content }}</p>
-                                <a class="btn-primary" href="{{ fields.link.url }}">
-                                    <span>{{ fields.link.title }}</span>
-                                    <span class="show-for-sr">{{ fields.link.title }} button</span>
-                                </a>
+                                {% if fields.link %}
+                                    <a class="btn-primary" href="{{ fields.link.url }}">
+                                        <span>{{ fields.link.title }}</span>
+                                        <span class="show-for-sr">{{ fields.link.title }} button</span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="cell medium-6 medium-order-2 small-order-1">
