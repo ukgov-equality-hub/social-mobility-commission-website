@@ -25,6 +25,9 @@ web/app/uploads/*
 web/wp
 web/.htaccess
 
+# ACF-JSON
+web/app/themes/smc/acf-json
+
 # Logs
 *.log
 error_log
