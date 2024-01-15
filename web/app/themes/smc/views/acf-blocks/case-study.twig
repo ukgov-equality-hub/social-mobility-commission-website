@@ -15,7 +15,8 @@
             <div class="grid-container">
 
                 <div class="split-content-block">
-                    <div class="grid-x grid-padding-x">
+                    <div class="grid-x grid-padding-x"
+                         style="{% if fields.image_on_right %}flex-direction: row-reverse;{% endif %}">
                         <div class="cell medium-6">
                             {% set TImg = Image(fields.image) %}
                             {% set altOverride = "card side image" %}
