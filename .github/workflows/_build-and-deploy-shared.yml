@@ -123,6 +123,10 @@ jobs:
         run: |
           echo '{ "git_commit": "${{ github.sha }}", "git_branch": "${{ github.ref_name }}", "github_action_name": "${{ github.workflow }}", "github_action_run_url": "https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}" }' > build-info.json
 
+      - name: 'Replace TIMESTAMP_HERE with GitHub Run ID / Run Attempt'
+        run: |
+          sed -i 's/TIMESTAMP_HERE/${{ github.run_id }}-${{ github.run_attempt }}/g' ./config/application.php
+
       - name: 'Create .env file'
         run: |
           touch .env
