@@ -12,7 +12,17 @@ resource "aws_cloudfront_cache_policy" "cloudfront_cache_policy__main_website" {
     headers_config {
       header_behavior = "whitelist"
       headers {
-        items = ["Authorization", "Host", "X-CSRFToken", "X-WP-Nonce"]
+        items = [
+          "Authorization",
+          "Host",
+          "X-CSRFToken",
+          "X-WP-Nonce",
+
+          # WordPress uses User-Agent to decide whether to show the rich-text/block editor
+          # If we don't allow User-Agent, it shows the rich-text/block editor as a code editor (damn you, WordPress!)
+          # https://stackoverflow.com/questions/42144410/tinymce-doesnt-load-after-putting-a-cdn-on-website
+          "User-Agent"
+        ]
       }
     }
     query_strings_config {
