@@ -127,6 +127,11 @@ function handler(event) {
     return event.request;
   }
 
+  // If the request is for the WordPress admin portal or the WP JSON API, let the request through because it uses its own authentication.
+  if (event.request.uri.startsWith('/wp/') || event.request.uri.startsWith('/wp-json/')) {
+    return event.request;
+  }
+
   // But if we get here, we must either be missing the auth header or the
   // credentials failed to match what we expected.
   // Request the browser present the Basic Auth dialog.
