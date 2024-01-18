@@ -64,6 +64,9 @@ RUN composer install
 # Copy the remaining files to Docker image
 COPY . .
 
+# Increase the maximum upload size
+RUN echo "upload_max_filesize=999M\npost_max_size=999M" > /usr/local/etc/php/conf.d/wordpress-config.ini
+
 # Expose port 8080 (so we can connect to the server from outside the Docker container)
 EXPOSE 8080
 
