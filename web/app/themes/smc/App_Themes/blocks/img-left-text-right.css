@@ -1,0 +1,78 @@
+/**
+ Styles for Custom ACF Gutenberg Block - "Image left Text Right"
+ Places a stack of 4 images on one half of the screen
+ And Intro rich-text and a CTA button on the other
+ */
+.zsty-block-iltr {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  clear: both;
+}
+.zsty-block-iltr h2.section-title {
+  color: #454545;
+  margin-bottom: 1.2rem;
+}
+.zsty-block-iltr .block-collage {
+  width: 100%;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.zsty-block-iltr .block-collage .img-1 {
+  width: 100%;
+  height: 300px;
+}
+.zsty-block-iltr .block-collage .img-2, .zsty-block-iltr .block-collage .img-3, .zsty-block-iltr .block-collage .img-4 {
+  position: absolute;
+}
+.zsty-block-iltr .block-collage .img-2 {
+  top: -2rem;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  z-index: 10;
+}
+.zsty-block-iltr .block-collage .img-3 {
+  top: 100px;
+  left: -2rem;
+  width: 280px;
+  height: 200px;
+}
+.zsty-block-iltr .block-collage .img-4 {
+  top: 230px;
+  left: 210px;
+  width: 140px;
+  height: 140px;
+}
+.zsty-block-iltr .block-collage div {
+  display: block;
+  background-color: #363636;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 10px solid #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  outline: 1px solid #DBDBDB;
+  transition: all 0.3s ease-in-out;
+}
+.zsty-block-iltr .block-collage div:hover {
+  transform: scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.zsty-block-iltr div.section-intro p {
+  line-height: 1.4rem;
+  font-size: 1.125rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.zsty-block-iltr a.zstyblk-btn-cta {
+  border: solid 1px #454545;
+  padding: 0.6rem 1.5rem;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
+}
+.zsty-block-iltr a.zstyblk-btn-cta:hover {
+  background-color: #1c5057;
+  color: #f7f7f7;
+}
+
+/*# sourceMappingURL=img-left-text-right.css.map */

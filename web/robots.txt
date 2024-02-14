@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /?s=
+Disallow: /search/
+Sitemap: /sitemap_index.xml

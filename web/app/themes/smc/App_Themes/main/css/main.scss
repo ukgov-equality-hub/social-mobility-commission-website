@@ -1,0 +1,54 @@
+﻿@charset "UTF-8";
+
+@import url('../foundation-sites/foundation.min.css');
+
+//== 1. general configuration
+@import 'abstracts/_variables.scss',
+'abstracts/_colors.scss',
+'abstracts/_functions.scss',
+'abstracts/_mixins.scss';
+
+//== 2. vendor
+@import 'vendor/_vendor.scss';
+
+//== 3. base
+@import 'base/_base.scss',
+'base/_icons.scss',
+'base/_typography.scss',
+'base/_spacing.scss',
+'base/_helpers.scss',
+'base/_animations.scss';
+
+//== 4. layout
+@import 'layout/_header.scss',
+'layout/_footer.scss',
+'layout/_sections.scss';
+
+//== 5. components
+@import 'components/_buttons.scss',
+'components/_nav-mobile.scss',
+'components/_nav-side.scss',
+'components/_nav-breadcrumbs.scss',
+'components/_nav-pagination.scss',
+'components/_dropdown-nav.scss',
+'components/_subnav.scss',
+'components/_cards.scss',
+'components/_filters.scss',
+'components/_circle-chart.scss',
+'components/_wysiwyg.scss',
+'components/_alert-strip.scss',
+'components/_accordion.scss',
+'components/_carousels.scss',
+'components/_modal.scss',
+'components/_forms.scss',
+'components/_progress-bar.scss',
+'components/_tooltip.scss',
+'components/_generic-list.scss',
+'components/_snippets.scss';
+
+//== 6. media and amended sheets
+@import 'media/_media-small.scss',
+'media/_media-medium.scss',
+'media/_media-large.scss',
+'media/_accessibility.scss',
+'media/_print.scss';

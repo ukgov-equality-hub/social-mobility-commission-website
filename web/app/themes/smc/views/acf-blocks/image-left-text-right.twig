@@ -1,0 +1,71 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+
+        <div id="cb-{{ block.id }}" class="small-up-12 cell zsty-block-iltr">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-12 text-center cell">
+                        {% if fields.heading_image is defined and fields.heading_image is not empty %}
+                            {% set img =  Image(fields.heading_image)%}
+                            <h2 class="section-title">
+                                <img src="{{ img.src|resize('small') }}"
+                                     class="notfullwidth notstyled"
+                                     alt="{{ img|alt('logo') }}" />
+                            </h2>
+                        {% endif %}
+
+                        {% if fields.heading is defined and fields.heading is not empty %}
+                            <h2 class="{% if fields.heading_image is not defined or fields.heading_image is empty  %} section-title  {% endif %} has-text-align-center">{{ fields.heading }}</h2>
+                        {% endif %}
+                    </div>
+                </div>
+                <br>
+
+                <div class="grid-x grid-padding-x align-center">
+                    <div class="medium-6 small-11 cell">
+                        <div class="pad-right">
+                            <div data-aos="fade-right" class="block-collage aos-init aos-animate">
+
+                                {% if fields.image_repeater %}
+                                    {% for sideimage in fields.image_repeater %}
+                                        {% set img =  Image(sideimage.side_image) %}
+                                        <div class="img-{{ loop.index }}" style="background-image:url({{ img.src }});"></div>
+
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="medium-6 small-11 cell" >
+                        <div class="pad-left">
+                            <div class="section-intro">
+                                {{ fields.block_text }}
+                            </div>
+
+                            <br>
+                            {% include 'fragments/anchor.twig' with { link: fields.call_to_action_link, classes:'zstyblk-btn-cta'} %}
+                            {#                    <a href="" class="">More about us</a>#}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,186 @@
+// main: ../main.scss
+
+/* BRAND COLOURS */
+
+// Core
+$col-dark-grey: #0C2231;
+$col-grey: #3C5362;
+$col-light-grey: #EEF3F6;
+$col-orange: #FB7B5B;
+$col-light-orange: #FEE3DC;
+$col-white: #fff;
+
+// Supporting
+$col-pink: #F39AC7;
+$col-light-pink: #FCE8F2;
+$col-blue: #6486F7;
+$col-light-blue: #E7ECFE;
+$col-teal: #47C2AD;
+$col-light-teal: #D9F2EE;
+$col-yellow: #FFEC70;
+$col-light-yellow: #FCF8DE;
+
+// Additional
+$col-gradient-orange: #FB905B;
+$col-semantic-red: #FB6060;
+$col-border-red: #CA2F2F;
+
+// Gradients
+$bold-gradient: linear-gradient(90deg, #FB7E5B 0%, #FB905B 100%);
+$subdued-gradient: linear-gradient(90deg, #FEE3DC 0%, #FCF8DE 100%);
+
+.color-pallete {
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 3rem;
+    min-height: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+
+    &:before {
+      content: '';
+      height: 2rem;
+      width: 2rem;
+      border: 1px solid $col-dark-grey;
+      border-radius: 4px;
+      position: absolute;
+      top: -.1rem;
+      left: 0;
+    }
+
+    &.dark-grey:before {
+      background-color: $col-dark-grey;
+    }
+    &.grey:before {
+      background-color: $col-grey;
+    }
+    &.light-grey:before {
+      background-color: $col-light-grey;
+    }
+    &.orange:before {
+      background-color: $col-orange;
+    }
+    &.light-orange:before {
+      background-color: $col-light-orange;
+    }
+    &.white:before {
+      background-color: $col-white;
+    }
+    &.pink:before {
+      background-color: $col-pink;
+    }
+    &.light-pink:before {
+      background-color: $col-light-pink;
+    }
+    &.blue:before {
+      background-color: $col-blue;
+    }
+    &.light-blue:before {
+      background-color: $col-light-blue;
+    }
+    &.teal:before {
+      background-color: $col-teal;
+    }
+    &.light-teal:before {
+      background-color: $col-light-teal;
+    }
+    &.yellow:before {
+      background-color: $col-yellow;
+    }
+    &.light-yellow:before {
+      background-color: $col-light-yellow;
+    }
+    &.semantic-red:before {
+      background-color: $col-semantic-red;
+    }
+    &.border-red:before {
+      background-color: $col-border-red;
+    }
+    &.bold-gradient:before {
+      background: $bold-gradient;
+    }
+    &.subdued-gradient:before {
+      background: $subdued-gradient;
+    }
+  }
+
+}
+
+/* COLOUR VARIABLES */
+$col-hamburger-lines: #363636;
+
+$col-text-anchor: #363636;
+$col-text-main: #363636;
+$col-text-wysiwyg: #363636;
+$col-text-form-label: #363636;
+$col-text-breadcrumbs: #363636;
+
+$col-form-input-bg: #f2f2f2;
+$col-form-input-fg: #363636;
+$col-form-success: #60b676;
+$col-form-error: #91071a;
+
+$col-filters-title-bg: #363636;
+$col-filters-title-fg: #fff;
+$col-filters-body-bg: #f8f8f8;
+$col-filters-body-fg: #363636;
+
+$col-asidenav-toggle-bg: #363636;
+$col-asidenav-toggle-fg: #fff;
+
+// pagination
+$col-pagination-bg: #fff;
+$col-pagination-fg: #000;
+$col-pagination-curr-bg: #000;
+$col-pagination-curr-fg: #fff;
+
+// accordion
+$col-accordion-border: #e4e4e4;
+$col-accordion-active: #f8f8f8;
+$accordion-shadow: 0 0 10px rgba(#000, .04);
+$accordion-radius: 0.175rem;
+
+// alert strip
+$col-alert-bg: #fd0;
+$col-alert-fg: #000;
+
+// breadcrumbs
+$col-wrapper-breadcrumb-bg: #fff;
+$col-text-breadcrumbs: #363636;
+
+// buttons
+$col-btn-prim-fg: #fff;
+$col-btn-prim-bg: #1779ba;
+
+$col-btn-sec-fg: #fff;
+$col-btn-sec-bg: #767676;
+
+$col-btn-tert-fg: #000;
+$col-btn-tert-bg: #3adb76;
+
+$col-btn-alert-fg: #fff;
+$col-btn-alert-bg: #cc4b37;
+
+$col-btn-warn-fg: #000;
+$col-btn-warn-bg: #fd0;
+
+//cards
+$card-shadow: 0 0 20px rgba(#000, .1);
+
+// WYSIWYG
+
+// blockquote
+$col-blockquote-bg: #f8f8f8;
+
+// inset text
+$col-inset-border: 10px solid #e4e4e4;
+
+// tables
+$col-table-head-bg: #f8f8f8;
+$col-table-foot-bg: #fff;
+$col-table-alt-bg: #f8f8f8;
+
+$col-focus-outline: #fd0;

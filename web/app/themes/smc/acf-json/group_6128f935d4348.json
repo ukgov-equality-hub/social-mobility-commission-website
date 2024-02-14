@@ -1,0 +1,193 @@
+{
+    "key": "group_6128f935d4348",
+    "title": "Theme Config - General Settings",
+    "fields": [
+        {
+            "key": "field_64ac18943538a",
+            "label": "Site Logo",
+            "name": "site_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6128f952f52ea",
+            "label": "Site Title",
+            "name": "site_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6128fb4250f47",
+            "label": "General Contact Email",
+            "name": "contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6129001ce692e",
+            "label": "Contact Phone Number",
+            "name": "phone_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "tel",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6128ff9ce692d",
+            "label": "Full Contact Address",
+            "name": "full_contact_address",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Your main office address as Multi line text e.g.\r\n\r\n123 Main Street\r\nSpringfield,\r\nCodershire\r\nCD12 ER45",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_61290075e692f",
+            "label": "Google Tag Manager ID",
+            "name": "google_tag_manager_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Just the ID of the GTM embed e.g. GTM-AB1CDEF\r\n\r\nThe template will turn that into full GTM embed code\r\n <!-- Google Tag Manager -->\r\n    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\r\n            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\r\n            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\r\n            'https:\/\/www.googletagmanager.com\/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\r\n        })(window,document,'script','dataLayer','GTM-AB1CDEF');<\/script>\r\n    <!-- End Google Tag Manager -->",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "IF USING CIVIC COOKIE _ LEAVE THIS BLANK AND USE CIVIC COOKIE INSTEAD",
+            "prepend": "",
+            "append": "",
+            "maxlength": 25
+        },
+        {
+            "key": "field_612906c22c0a1",
+            "label": "Office Location",
+            "name": "office_location",
+            "aria-label": "",
+            "type": "google_map",
+            "instructions": "Choose Office Location: requires Google Maps API Key for Javascript Embed and Places APIs",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "53.430843",
+            "center_lng": "-2.960821",
+            "zoom": 14,
+            "height": 500
+        },
+        {
+            "key": "field_64e5c076a54a5",
+            "label": "404 Page Hero Image",
+            "name": "not_found_page_hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1692778669
+}

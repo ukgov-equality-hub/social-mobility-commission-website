@@ -1,0 +1,55 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if content and content|trim is not empty %}
+        <h1>{{ title }}</h1>
+
+        <div class="typography">
+            {{ content|raw }}
+        </div>
+    {% endif %}
+
+    {% if posts|length > 0 %}
+
+        <div class="wrapper-section">
+        <div class="grid-container">
+
+        <div class="grid-x grid-padding-x align-center">
+            <div class="medium-11 small-11 cell">
+
+                <div class="grid-x grid-padding-x grid-padding-y medium-up-3 posts">
+
+
+                    {% for post in posts %}
+                        <div class="cell {{ post.post_class }}">
+
+
+                            <a href="{{ post.link }}" class="card-news" title="{{ post.excerpt|raw }}">
+                                    <span class="img" style="background-image:url({{ post.thumbnail.src }});">
+
+                                        <div class="text" style="">
+                                            <span class="meta">{{ post.date|date('j M Y') }}</span>
+                                            <span class="title">{{ post.title }}</span>
+                                            <span class="excerpt">{{ post.excerpt }}</span>
+                                        </div>
+
+                                    </span>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        {{ include( 'components/pagination.twig', { 'posts': posts }) }}
+
+
+        </div>{#  <!-- end grid-container -->  #}
+        </div>{# <!-- end wrapper-section --> #}
+
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endblock %}

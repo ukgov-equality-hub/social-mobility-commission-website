@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  smc_website_db:
+    container_name: "smc_website_db"
+    image: mysql:8.2
+    restart: always
+    ports:
+      - target: 3306      # The port in the container
+        published: 3306   # The port on the host machine (your laptop)
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - type: volume
+        source: smc_website_db_volume
+        target: /var/lib/mysql
+
+  smc_website_app:
+    container_name: "smc_website_app"
+    build:                    # This service is built using a Dockerfile (rather than downloaded as a pre-built image)
+      dockerfile: Dockerfile  # This service uses the default Dockerfile as its specification (this is the default, but good to know!)
+      args:
+        - ACF_PRO_KEY
+    environment:
+      DB_HOST: smc_website_db
+    ports:
+      - target: 8080      # The port in the container
+        published: 8080   # The port on the host machine (your laptop)
+    volumes:
+      - type: bind
+        source: ./web/app/uploads                # The directory on the host machine (your laptop)
+        target: /var/www/html/web/app/uploads    # The directory this is mounted to inside the container
+    depends_on:
+      - smc_website_db
+
+volumes:
+  smc_website_db_volume:

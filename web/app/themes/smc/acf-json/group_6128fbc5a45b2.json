@@ -1,0 +1,105 @@
+{
+    "key": "group_6128fbc5a45b2",
+    "title": "Theme Config - Footer Settings",
+    "fields": [
+        {
+            "key": "field_6128fbd6a7bc4",
+            "label": "Copyright Name",
+            "name": "copyright_name",
+            "type": "text",
+            "instructions": "Copyright symbol and dates added automatically - just add your legal name here.  \r\ne.g. you add ACME Inc  \r\nThe website outputs  © ACME Inc 2021",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "ACME Inc.",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6128fbe1a7bc5",
+            "label": "Registered Office Address",
+            "name": "registered_office_address",
+            "type": "text",
+            "instructions": "*optional\r\nAddress of the registered office as one line",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "1 West High Street, North Arkham, Gotham BAT21",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6128fc34a7bc6",
+            "label": "Company Number Info",
+            "name": "company_number",
+            "type": "text",
+            "instructions": "Registered Company Number.\r\ne.g. Registerd in England, Number GB123456\r\nor Regsitered in Ireland, Number IE12345",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6128fc98a7bc7",
+            "label": "Footer Logo",
+            "name": "footer_logo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-footer"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1630078531
+}

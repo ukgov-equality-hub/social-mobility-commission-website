@@ -1,0 +1,189 @@
+﻿.btn-txt-size {
+	cursor: pointer;
+	line-height: 1;
+	border: 2px solid #cacaca;
+	height: 28px;
+	width: 28px;
+	text-align: center;
+	margin-right: 5px;
+	vertical-align: middle;
+
+	&.txt-small {
+		font-size: .8rem;
+	}
+
+	&.txt-medium {
+		font-size: 1rem;
+	}
+
+	&.txt-large {
+		font-size: 1.25rem;
+	}
+
+	&.active {
+		background-color: #177bb8;
+		color: #fff;
+		border-color: #177bb8;
+	}
+}
+
+input:focus ~ .switch-paddle {
+	background: red;
+}
+
+/* --------------------------------- */
+/* ==== High Contrast Overrides ==== */
+/* --------------------------------- */
+html.access-colour-contrast {
+	background-color: #000 !important;
+
+	body {
+		background-color: #000 !important;
+	}
+
+	h1, h2, h3, h4, h5, h6, p, span, li, td {
+		color: yellow !important;
+	}
+
+	.switch.small .switch-paddle {
+		background-color: #000 !important;
+		border: 1px solid yellow !important;
+
+		span {
+			color: yellow !important;
+		}
+
+		&::after {
+			background-color: #000;
+		}
+	}
+
+	.btn-txt-size {
+		border-color: yellow;
+		color: yellow;
+
+		&.active {
+			background-color: yellow;
+			color: #000;
+		}
+	}
+
+	.btn-demo {
+		border-color: yellow;
+		color: yellow;
+
+		&:hover {
+			background-color: yellow;
+			color: #000;
+			border-color: yellow;
+		}
+	}
+
+	* {
+		background-color: #000 !important;
+		color: yellow !important;
+	}
+
+	.grid-container, .grid-x, .cell {
+		background-color: transparent !important;
+	}
+}
+
+
+/* --------------------------------- */
+/* ==== Sepia Contrast Overrides ==== */
+/* --------------------------------- */
+html.access-colour-sepia {
+	background-color: #cc9 !important;
+
+	body {
+		background-color: #cc9 !important;
+	}
+
+	h1, h2, h3, h4, h5, h6, p, span, li, td {
+		color: #009 !important;
+	}
+
+	.switch.small .switch-paddle {
+		background-color: #cc9 !important;
+		border: 1px solid #009 !important;
+
+		span {
+			color: #009 !important;
+		}
+
+		&::after {
+			background-color: #000;
+		}
+	}
+
+	.btn-txt-size {
+		border-color: #009;
+		color: #009;
+
+		&.active {
+			background-color: #009;
+			color: #cc9;
+		}
+	}
+
+	.btn-demo {
+		border-color: #009;
+		color: #009;
+
+		&:hover {
+			background-color: #009;
+			color: #000;
+			border-color: #009;
+		}
+	}
+
+	* {
+		background-color: #cc9 !important;
+		color: #009 !important;
+	}
+
+	.grid-container, .grid-x, .cell {
+		background-color: transparent !important;
+	}
+}
+
+/* --------------------------------- */
+/* ==== Animations Off ==== */
+/* --------------------------------- */
+html.access-anims-off {
+
+	* {
+		animation: none !important;
+		animation-duration: 0s !important;
+		animation-delay: 0s !important;
+	}
+
+	.aos-init, .aos-animate {
+		opacity: 1 !important;
+		transform: none !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+		transition-property: none !important;
+	}
+}
+
+/* --------------------------------- */
+/* reduced animations */
+/* --------------------------------- */
+@media screen and (prefers-reduced-motion: reduce) {
+
+	* {
+		animation: none !important;
+		animation-duration: 0s !important;
+		animation-delay: 0s !important;
+	}
+
+	.aos-init, .aos-animate {
+		opacity: 1 !important;
+		transform: none !important;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+		transition-property: none !important;
+	}
+}

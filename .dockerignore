@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*/
+!web/app/mu-plugins/zesty-resources/
+!web/app/mu-plugins/*.php
+!web/app/plugins/formidable-pro/
+!web/app/plugins/formidable/
+!web/app/plugins/formidable-quizzes/
+
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+
+# WordPress
+web/wp
+web/.htaccess
+
+# Logs
+*.log
+error_log
+
+# Composer
+vendor/*
+!vendor/.gitkeep
+
+# WP-CLI
+wp-cli.local.yml
+
+var/*
+!var/cache/.gitkeep
+!var/log/.gitkeep
+config/backup/*
+
+# IDEs
+.idea
+
+# Mac
+.DS_Store
+
+# Compilers
+node_modules
+
+.ruby-version

@@ -1,0 +1,141 @@
+{% extends "base.twig" %}
+
+
+
+{% block content %}
+
+    {{ include('fragments/intro-text.twig', {text:text}) }}
+
+    <!-- Cards -->
+    <div class="wrapper-section p-bottom-5">
+        <div class="grid-container">
+
+            <div class="text-center">
+                <p class="headline-3 m-bottom-7">{{ page.subtitle }}</p>
+            </div>
+
+            <!-- Filter block -->
+            <div class="wrapper-section p-bottom-10">
+                <div class="grid-container">
+                    <form id="filter"action="{{ fn('get_the_permalink') }}" method="get" aria-label="form-for-filtering">
+                        <input type="hidden" id="checker" name="checker" value="checker">
+                    <div class="filter-block form-general">
+                        <div class="grid-x grid-margin-x">
+
+                            {% for filter in filters %}
+
+                                <div class="cell large-auto">
+                                    <label for="filterOption1">{{ filter.title }}</label>
+                                    <select name="filterOption{{ filter.slug }}" id="filterOption{{ loop.index }}">
+{#                                        {% if posts.selected and posts.selected == %}<option value="" disabled selected hidden>choose</option>{% endif %}#}
+                                        <option value="" disabled selected hidden>Select {{ filter.title }}</option>
+                                        <option value="all">All</option>
+                                        {% for subfilter in filter.terms %}
+                                        <option value="{{ subfilter.term_id }}" {% for term in posts.selectedTerms %}{% if term == subfilter.term_id %}selected{% endif %}{% endfor %}>{{ subfilter.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endfor %}
+                            <div class="cell large-2 align-self-bottom text-center">
+                                <button class="btn-primary btn-primary--text" type="submit"><span>Apply filters</span></button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Results and Sort by -->
+            <div class="wrapper-section p-bottom-8">
+                <div class="grid-container">
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell large-8 medium-6 align-self-bottom">
+                            {% if posts.posts %}<p class="headline-1 m-bottom-8">Showing {% if paged >= 2 %}{{ min }}–{{max }}{% else %}{{ min }}–{{ postsOnThisPage }}{% endif %} of {{ posts.count}} result{% if posts.count > 1 %}s{% endif %}</p>
+                            {% else %}
+                            <p class="headline-1 m-bottom-8">Showing {% if paged >= 2 %}{{ min }}–{{max }}{% else %}{{ min }}–{{postsOnThisPage }} {% endif %} of {{ posts.count }} result{% if posts.count > 1 %}s{% endif %}</p>
+                            {% endif %}
+                        </div>
+                        {% if posts.count > 1 %}
+                        <div class="cell large-4 medium-6">
+                            <div class="form-general m-bottom-7">
+                                <label for="sortBy">Sort by results:</label>
+                                <select id="sortBy" name="sort">
+                                    <option value="Date-DESC" {% if posts.selectedSort == "Date-DESC" %}selected{% endif %}>Date (Descending)</option>
+                                    <option value="Date-ASC" {% if posts.selectedSort == "Date-ASC" %}selected{% endif %}>Date (Ascending)</option>
+                                    <option value="Z-A-DESC" {% if posts.selectedSort == "Z-A-DESC" %}selected{% endif %}>Z-A</option>
+                                    <option value="A-Z-ASC" {% if posts.selectedSort == "A-Z-ASC" %}selected{% endif %}>A-Z</option>
+                                </select>
+                            </div>
+                        </div>
+                            <script language="javascript" type="text/javascript">
+                                jQuery(function() {
+                                    jQuery('#sortBy').change(function() {
+                                        this.form.submit();
+                                    });
+                                });
+                            </script>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            </form>
+            <div class="grid-x grid-padding-x large-up-3 medium-up-2">
+                {% if posts.posts %}
+                    {% for card in posts.posts  %}
+                        {% set post = Post(card) %}
+                        <div class="cell">
+                            <a class="feature-card m-bottom-9" href="{{ post.link }}">
+                                <div class="inner">
+                                    {% set TImg = Image(post.thumbnail) %}
+                                    {% set srcset = TImg.src|resize(420) ~ ' 1024w, ' ~ TImg.src|resize(420) ~ ' 300w,' %}
+                                    {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
+                                    <div class="content">
+                                        {% if fields.post_type == "events" %}
+                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                        {% endif %}
+                                        <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
+                                        <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>
+                                        <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for card in posts %}
+                        {% set post = Post(card) %}
+                        <div class="cell">
+                            <a class="feature-card m-bottom-9" href="{{ post.link }}">
+                                <div class="inner">
+                                    {% set TImg = Image(post.thumbnail) %}
+                                    {% set srcset = TImg.src|resize(420) ~ ' 1024w, ' ~ TImg.src|resize(420) ~ ' 300w,' %}
+                                    {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
+                                    <div class="content">
+                                        {% if fields.post_type == "events" %}
+                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                        {% endif %}
+                                        <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
+                                        <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>
+                                        <span class="btn-secondary">
+										<span>Learn more</span>
+									</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {{ include('components/pagination.twig', {posts:posts.posts}) }}
+    {{ include('components/pagination.twig', {posts:posts}) }}
+
+    {{ page.content|raw }}
+
+    {% include 'fragments/related.twig' %}
+
+{% endblock %}

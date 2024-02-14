@@ -1,0 +1,28 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    {% if fields != false %}
+<!-- Call to action module -->
+<div class="wrapper-section bold-gradient p-top-10 p-bottom-10">
+    <div class="grid-container">
+        <div class="section-title-block">
+            <h3 class="headline-1 m-bottom-6">{{ fields.title }}</h3>
+            <p class="body-large m-bottom-7">{{ fields.text }}</p>
+            <a class="btn-primary" href="{{ fields.link.url }}">
+                <span>{{ fields.link.title }}</span>
+                <span class="show-for-sr">{{ fields.link.title }}</span>
+            </a>
+        </div>
+    </div>
+</div>
+    {% endif %}
+
+{% endblock %}

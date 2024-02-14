@@ -1,0 +1,58 @@
+<footer>
+    <div class="wrapper-footer p-top-8">
+        <div class="grid-container">
+
+            <!-- Logo -->
+            {% set TImg = Image(options.footer_logo) %}
+            {% set altOverride = "Social mobility commission logo" %}
+            {% set srcset = TImg.src|resize(265) ~ ' 1024w, ' ~ TImg.src|resize('265') ~ ' 300w,' %}
+            {{ include( 'fragments/img.twig', {srcset:srcset, altOverride:altOverride, class:'footer-logo m-bottom-8'} )  }}
+            <div class="grid-x grid-padding-x large-up-4 medium-up-4">
+
+                <div class="cell">
+                    {% include 'components/base/footer-nav-menu.html.twig' with { 'menu': footer_nav_1, 'ulclass':'footer-menu m-bottom-8' } %}
+
+                    <h4 class="headline-5 m-bottom-3">Connect with us</h4>
+                    <ul class="footer-social m-bottom-8">
+                        <li><a href="{{ options.twitter_url }}" aria-label="Twitter"><span class="szicon-twitter"></span></a></li>
+                        <li><a href="{{ options.instagram_url }}" aria-label="Instagram"><span class="szicon-instagram"></span></a></li>
+                        <li><a href="{{ options.linkedin_url }}" aria-label="LinkedIn"><span class="szicon-linked-in"></span></a></li>
+                    </ul>
+                </div>
+
+                <div class="cell">
+                    {% include 'components/base/footer-nav-menu.html.twig' with { 'menu': footer_nav_2, 'ulclass':'footer-menu m-bottom-8' } %}
+                </div>
+
+                <div class="cell">
+                    {% include 'components/base/footer-nav-menu.html.twig' with { 'menu': footer_nav_3, 'ulclass':'footer-menu m-bottom-8' } %}
+                </div>
+
+                <div class="cell">
+                    {% include 'components/base/footer-nav-menu.html.twig' with { 'menu': footer_nav_4, 'ulclass':'footer-menu m-bottom-8' } %}
+                    {% include 'components/base/footer-nav-menu.html.twig' with { 'menu': footer_nav_5, 'ulclass':'footer-menu m-bottom-8' } %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="wrapper-base p-top-6 p-bottom-6">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="cell large-6 small-text-center">
+
+                    {% include 'components/base/footer-legals-nav-menu.html.twig' with { 'menu': footer_legals_nav, 'ulclass':'base-menu' } %}
+                </div>
+                <div class="cell large-6 large-text-right small-text-center">
+                    <p class="label-small">© {{ options.copyright_name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+    {{ function('wp_footer') }}
+
+

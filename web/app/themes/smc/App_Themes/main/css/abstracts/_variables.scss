@@ -1,0 +1,78 @@
+// main: ../main.scss
+
+/* FONT VARIABLES */
+
+// fallback font if needed for cumulative layout shift
+// @font-face {
+//   font-family: fallback-font;
+//   src: local(Arial);
+//   ascent-override: 100%;
+//   descent-override: 0%;
+//   line-gap-override: normal;
+//   advance-override: 10;
+//   size-adjust: 95%;
+// }
+// $font-title: fallback-font, sans-serif;
+// $font-main: fallback-font, sans-serif;
+
+$font-main: "fp-dancer-pro", sans-serif;;
+$font-icon: "icomoon";
+
+/* Spacing */
+$spacing-1: .25rem;
+
+$spacing-2: .5rem;
+$spacing-2-m: .25rem;
+
+$spacing-3: .75rem;
+$spacing-3-m: .5rem;
+$spacing-3-s: .25rem;
+
+$spacing-4: 1rem;
+$spacing-4-m: .75rem;
+$spacing-4-s: .5rem;
+
+$spacing-5: 1.25rem;
+$spacing-5-m: 1rem;
+$spacing-5-s: .75rem;
+
+$spacing-6: 1.5rem;
+$spacing-6-m: 1.25rem;
+$spacing-6-s: 1rem;
+
+$spacing-7: 2rem;
+$spacing-7-m: 1.5rem;
+$spacing-7-s: 1.25rem;
+
+$spacing-8: 3rem;
+$spacing-8-m: 2rem;
+$spacing-8-s: 1.5rem;
+
+$spacing-9: 4rem;
+$spacing-9-m: 3rem;
+$spacing-9-s: 2.5rem;
+
+$spacing-10: 5rem;
+$spacing-10-m: 4rem;
+$spacing-10-s: 2.75rem;
+
+$spacing-11: 6rem;
+$spacing-11-m: 5rem;
+$spacing-11-s: 3rem;
+
+$spacing-12: 8rem;
+$spacing-12-m: 6rem;
+$spacing-12-s: 4rem;
+
+/* Border radius */
+$border-radius-1: 4px;
+$border-radius-2: 8px;
+$border-radius-3: 12px;
+$border-radius-4: 16px;
+$border-radius-5: 24px;
+
+/* Border widths */
+$border-width-1: 1px;
+$border-width-2: 2px;
+$border-width-3: 3px;
+$border-width-4: 4px;

@@ -1,0 +1,59 @@
+<head>
+    <title>{{ function('wp_title') }}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="pingback" href="{{ site.pingback_url }}" />
+
+{#  Use DNS PRe-Fetch  / PreLoad / PreConnect <link> tags
+    to external domains to speed up page load and Web.dev / lighthouse scores.
+    e.g.
+      <link rel="dns-prefetch" href="https://example.com"> // Does the DNS lookup only - so wider browser support - nice fallback; Good if multipel itesm e.g. stylesheets AND scripst will be served by same external domain.
+      <link rel="preload" href="https://example.com">  // In general, try to use preload, as it's a more comprehensive performance tweak
+      <link rel="preconnect" href="https://example.com"> // Good for streaming or if you know what domain but not what end resource
+
+    use a tool such as erlister.phar to test and list external domains.
+#}
+
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="https://maps.googleapis.com" /> {#  Google Maps #}
+    <link rel="dns-prefetch" href="https://s.w.org" /> {#  WordPress Stylesheets CDN #}
+    <link rel="dns-prefetch" href="https://use.typekit.net" /> {#  fonts #}
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" /> {#  fonts #}
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin /> {#  fonts #}
+    <link rel="dns-prefetch" href="https://cc.cdn.civiccomputing.com" /> {# Civic Cookie #}
+    <!-- Font -->
+    <link rel="stylesheet" href="https://use.typekit.net/xzy4zxu.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
+
+<script>
+    // Include the following lines to define the gtag() function when
+    // calling this code prior to your gtag.js or Tag Manager snippet
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Call the default command before gtag.js or Tag Manager runs to
+    // adjust how the tags operate when they run. Modify the defaults
+    // per your business requirements and prior consent granted/denied, e.g.:
+    gtag('consent', 'default', {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+    });
+    gtag("set", "ads_data_redaction", true);
+
+</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PTLHS4C4');</script>
+    <!-- End Google Tag Manager -->
+    {{ function('wp_head') }}
+</head>

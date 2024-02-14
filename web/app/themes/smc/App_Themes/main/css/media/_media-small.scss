@@ -1,0 +1,21 @@
+// main: ../main.scss
+
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+
+	.wysiwyg img.right,
+	.wysiwyg img.left {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.work-card {
+		height: auto !important;
+	}
+}
+
+/*iphone x etc*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {}

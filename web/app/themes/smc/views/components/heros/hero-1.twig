@@ -1,0 +1,33 @@
+
+{#<div class="hero" style="position:relative">#}
+{#    {% if options.default_hero_image is not empty %}#}
+{#        {% set HeroImage = Image(options.default_hero_image) %}#}
+{#        #}{# the WP-SmartCrop way #}
+{#        <img class="heroimg" class="smart-crop" src="{{ HeroImage.src|resize('large') }}" />#}
+
+<!-- Hero 1-->
+<div class="grid-container">
+    <div class="hero-block">
+        <div class="grid-x grid-padding-x">
+            <div class="cell large-6 large-order-1 medium-order-2 small-order-2">
+                <div class="content">
+                    <h1 class="display-2">{{ page.block_hero_title }}</h1>
+                    <p class="body-large m-bottom-7">{{ page.block_hero_subtext }}</p>
+                    {% if page.block_hero_button %}
+                    <a class="btn-primary" href="{{ page.block_hero_button.url }}">
+                        <span>{{ page.block_hero_button.title }}</span>
+                        <span class="show-for-sr">button to {{ page.block_hero_button.title }}</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="cell large-6 large-order-2 medium-order-1 small-order-1">
+                {% set TImg = Image(page.block_hero_image) %}
+                {% set srcset = TImg.src|resize(900) ~ ' 1024w, ' ~ TImg.src|resize('500') ~ ' 300w,' %}
+                {{ include( 'fragments/img.twig', {srcset:srcset, class:'img'} )  }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
