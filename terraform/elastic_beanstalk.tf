@@ -434,6 +434,12 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
 
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "S3_BUCKET_UPLOADS"
+    value     = aws_s3_bucket.s3_bucket__uploads.id
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
     name      = "ACF_PRO_KEY"
     value     = var.ACF_PRO_KEY
   }

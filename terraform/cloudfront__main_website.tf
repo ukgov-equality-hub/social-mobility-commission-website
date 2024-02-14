@@ -34,8 +34,31 @@ resource "aws_cloudfront_cache_policy" "cloudfront_cache_policy__main_website" {
   }
 }
 
+resource "aws_cloudfront_cache_policy" "cloudfront_cache_policy__uploads" {
+  name = "${var.service_name_hyphens}--${var.environment_hyphens}-Cache-Policy--Uploads"
+  min_ttl = 0
+  default_ttl = 60
+  max_ttl = 600
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = "none"
+    }
+    headers_config {
+      header_behavior = "none"
+    }
+    query_strings_config {
+      query_string_behavior = "none"
+    }
+
+    enable_accept_encoding_gzip = true
+    enable_accept_encoding_brotli = true
+  }
+}
+
 locals {
   distribution_for_main_website__main_origin_id = "${var.service_name_hyphens}--${var.environment_hyphens}--Main-Website-origin"
+  distribution_for_main_website__uploads_origin_id = "${var.service_name_hyphens}--${var.environment_hyphens}--Uploads-origin"
 }
 
 resource "aws_cloudfront_distribution" "distribution__main_website" {
@@ -54,6 +77,12 @@ resource "aws_cloudfront_distribution" "distribution__main_website" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols = ["TLSv1.2"]
     }
+  }
+
+  origin {
+    domain_name = aws_s3_bucket.s3_bucket__uploads.bucket_regional_domain_name
+    origin_id = local.distribution_for_main_website__uploads_origin_id
+    origin_access_control_id = aws_cloudfront_origin_access_control.oac_for_s3_uploads.id
   }
 
   price_class = "PriceClass_100"
@@ -88,12 +117,38 @@ resource "aws_cloudfront_distribution" "distribution__main_website" {
     }
   }
 
+  ordered_cache_behavior {
+    path_pattern = "/app/uploads/*"
+    cache_policy_id = aws_cloudfront_cache_policy.cloudfront_cache_policy__uploads.id
+    allowed_methods = ["GET", "HEAD", "OPTIONS"]
+    cached_methods = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = local.distribution_for_main_website__uploads_origin_id
+    viewer_protocol_policy = "redirect-to-https"
+    compress = true
+
+    dynamic "function_association" {
+      for_each = var.environment != "Prod" ? [1] : []  // Only create this Function Association in non-production environments (i.e. if "var.environment" is not "Prod")
+
+      content {
+        event_type = "viewer-request"
+        function_arn = aws_cloudfront_function.http_basic_auth_function[0].arn
+      }
+    }
+  }
+
   restrictions {
     geo_restriction {
       restriction_type = "none"
       locations = []
     }
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "oac_for_s3_uploads" {
+  name                              = "${var.service_name_hyphens}--${var.environment_hyphens}--oac_for_s3_uploads"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_function" "http_basic_auth_function" {

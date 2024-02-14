@@ -178,3 +178,27 @@ if ( (defined('WP_DEBUG') && WP_DEBUG) || WP_ENV === 'development') {
 define( 'VULN_API_TOKEN', env('VULN_API_TOKEN') );
 
 define('MAIL_RETURN_PATH_AND_REPLY_TO', env('MAIL_RETURN_PATH_AND_REPLY_TO'));
+
+
+/**
+ * Configure S3-Uploads plugin
+ * https://github.com/humanmade/S3-Uploads
+ */
+define('S3_UPLOADS_BUCKET', env('S3_BUCKET_UPLOADS') . '/app');
+define('S3_UPLOADS_REGION', 'eu-west-2'); // the s3 bucket region (excluding the rest of the URL)
+
+// Set the S3 object permission to private
+define('S3_UPLOADS_OBJECT_ACL', 'private');
+
+// disable URL rewriting altogether
+define('S3_UPLOADS_DISABLE_REPLACE_UPLOAD_URL', true);
+
+if (WP_ENV == 'development') {
+    // You can set key and secret directly:
+    define('S3_UPLOADS_KEY', env('S3_UPLOADS_KEY'));
+    define('S3_UPLOADS_SECRET', env('S3_UPLOADS_SECRET'));
+}
+else {
+    // Or if using IAM instance profiles, you can use the instance's credentials:
+    define('S3_UPLOADS_USE_INSTANCE_PROFILE', true);
+}
