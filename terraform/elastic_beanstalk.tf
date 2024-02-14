@@ -361,12 +361,6 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
 
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
-    name      = "FILE_SYSTEM_ID"
-    value     = aws_efs_file_system.efs_file_system__uploads.id
-  }
-
-  setting {
-    namespace = "aws:elasticbeanstalk:application:environment"
     name      = "WP_ENV"
     value     = "production"
   }
