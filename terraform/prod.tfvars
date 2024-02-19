@@ -2,7 +2,7 @@
 environment = "Prod"
 environment_hyphens = "Prod"
 
-create_dns_record__main_website = true
+create_dns_record__main_website = false
 dns_record_subdomain_including_dot__main_website = ""
 
 create_redirect_from_www_domain = true
