@@ -6,6 +6,7 @@ use App\AcfBlocks\AcfBlockInterface;
 use App\AcfBlocks\Author;
 use App\AcfBlocks\CardHalfAndHalfBlock;
 use App\AcfBlocks\CaseStudy;
+use App\AcfBlocks\ChildsPlayGameBlock;
 use App\AcfBlocks\FeatureCardsBlock;
 use App\AcfBlocks\GeneralQuote;
 use App\AcfBlocks\HowCanWeHelp;
@@ -48,6 +49,7 @@ class AcfCustomBlocksService
             ImageFullBlock::class,
             VideoFullBlock::class,
             FeatureCardsBlock::class,
+            ChildsPlayGameBlock::class
             //... others here
         ];
 
