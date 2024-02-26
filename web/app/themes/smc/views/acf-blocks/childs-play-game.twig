@@ -1,0 +1,76 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    <div id="SMC-interactive-game-wrapper" class="SMC-interactive-game-wrapper">
+        <div id="smc-game"></div>
+    </div>
+
+    <style>
+        .SMC-interactive-game-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+    <script>
+        function SMC_child_play_game_start() {
+            const game_element = document.getElementById('smc-game');
+
+            const client_rectangle = game_element.getBoundingClientRect();
+
+            const relative_top_of_game_div = client_rectangle.top;
+            const game_element_height = client_rectangle.height;
+            const relative_bottom_of_game_div = client_rectangle.bottom;
+
+            const top_of_viewport = window.scrollY;
+            const viewport_height = document.documentElement.clientHeight;
+            const bottom_of_viewport = top_of_viewport + viewport_height;
+
+            if (relative_top_of_game_div > 0 && relative_bottom_of_game_div < viewport_height) {
+                // The game is fully within the viewport.
+                // Nothing to do here
+                return;
+            }
+
+            if (game_element_height < viewport_height) {
+                // The game element CAN fit entirely within the viewport, but it isn't currently entirely within the viewport
+                // Scroll up or down (as little as possible) to make it fit within the viewport
+                if (relative_top_of_game_div < 0) {
+                    // The game window is too far up
+                    // We want to scroll the minimum amount possible, so make the top of the game match the top of the viewport
+                    const amount_to_scroll_down = relative_top_of_game_div
+                    window.scrollBy({ top: amount_to_scroll_down, behavior: "instant"});
+                    return;
+                }
+                if (relative_bottom_of_game_div > viewport_height) {
+                    // The game window is too far down
+                    // We want to scroll the minimum amount possible, so make the bottom of the game match the bottom of the viewport
+                    const amount_to_scroll_down = relative_bottom_of_game_div - viewport_height;
+                    window.scrollBy({ top: amount_to_scroll_down, behavior: "instant"});
+                    return;
+                }
+            }
+            else {
+                // The game element is taller than the viewport.
+                // Don't scroll automatically
+            }
+        }
+    </script>
+
+    <script src="{{ fields.hostname }}/SMC-interactive-game.js"></script>
+    <link rel="stylesheet" href="{{ fields.hostname }}/SMC-interactive-game.css" />
+
+{% endblock %}
+
+
+
+
+
