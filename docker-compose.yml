@@ -4,7 +4,7 @@ services:
   smc_website_db:
     container_name: "smc_website_db"
     image: mysql:8.2
-    restart: always
+    restart: unless-stopped
     ports:
       - target: 3306      # The port in the container
         published: 3306   # The port on the host machine (your laptop)
