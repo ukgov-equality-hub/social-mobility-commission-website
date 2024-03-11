@@ -15,15 +15,18 @@
             <div class="grid-container">
 
                 <div class="split-content-block">
-                    <div class="grid-x grid-padding-x">
+                    <div class="grid-x grid-padding-x"
+                         style="{% if fields.image_on_left %}flex-direction: row-reverse;{% endif %}">
                         <div class="cell medium-6 medium-order-1 small-order-2 align-self-middle">
                             <div class="content">
                                 <h2 class="display-3 m-bottom-7">{{ fields.title }}</h2>
                                 <p class="body-large m-bottom-7">{{ fields.content }}</p>
-                                <a class="btn-primary" href="{{ fields.link.url }}">
-                                    <span>{{ fields.link.title }}</span>
-                                    <span class="show-for-sr">{{ fields.link.title }} button</span>
-                                </a>
+                                {% if fields.link %}
+                                    <a class="btn-primary" href="{{ fields.link.url }}">
+                                        <span>{{ fields.link.title }}</span>
+                                        <span class="show-for-sr">{{ fields.link.title }} button</span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="cell medium-6 medium-order-2 small-order-1">

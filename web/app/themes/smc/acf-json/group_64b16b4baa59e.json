@@ -82,6 +82,26 @@
                 "id": ""
             },
             "return_format": "array"
+        },
+        {
+            "key": "field_65a027160af0b",
+            "label": "Image on Left (Image is on the right by default)",
+            "name": "image_on_left",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -102,5 +122,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1689349048
+    "modified": 1704995033
 }

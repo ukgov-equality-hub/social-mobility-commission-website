@@ -33,6 +33,9 @@ services:
       - type: bind
         source: ./web/app/uploads                # The directory on the host machine (your laptop)
         target: /var/www/html/web/app/uploads    # The directory this is mounted to inside the container
+      - type: bind
+        source: ./web/app/themes/smc/acf-json                # The directory on the host machine (your laptop)
+        target: /var/www/html/web/app/themes/smc/acf-json    # The directory this is mounted to inside the container
     depends_on:
       - smc_website_db
 

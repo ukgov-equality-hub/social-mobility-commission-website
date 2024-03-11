@@ -15,7 +15,8 @@
             <div class="grid-container">
 
                 <div class="split-content-block">
-                    <div class="grid-x grid-padding-x">
+                    <div class="grid-x grid-padding-x"
+                         style="{% if fields.image_on_right %}flex-direction: row-reverse;{% endif %}">
                         <div class="cell medium-6">
                             {% set TImg = Image(fields.image) %}
                             {% set altOverride = "card side image" %}
@@ -26,10 +27,12 @@
                             <div class="content content--right content--quote">
                                 <p class="body-large m-bottom-4">{{ fields.text_content }}</p>
                                 <h4 class="headline-4 m-bottom-7">{{ fields.name }}, {{ fields.role }}</h4>
-                                <a class="btn-secondary" href="{{ fields.link.url }}">
-                                    <span>{{ fields.link.title }}</span>
-                                    <span class="show-for-sr">button for {{ fields.link.title }}</span>
-                                </a>
+                                {% if fields.link %}
+                                    <a class="btn-secondary" href="{{ fields.link.url }}">
+                                        <span>{{ fields.link.title }}</span>
+                                        <span class="show-for-sr">button for {{ fields.link.title }}</span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
