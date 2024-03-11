@@ -16,10 +16,15 @@
 <main id="maincontent">
     {% block hero %}
 
-        {% if page.hero_type == 1 %}
-            {% include 'components/heros/hero-1.twig' with {'page': page} %}
-        {% else %}
-            {% include 'components/heros/hero-2.twig' with {'page': page} %}
+        {# page.show_hero_block might not be defined (for pages that were created before page.show_hero_block)
+           The way that seems to work to check this is to compare the value of page.show_hero_block with ''
+           Note (page.show_hero_block is defined) doesn't work in this case #}
+        {% if ((page.show_hero_block == '') or page.show_hero_block) %}
+            {% if page.hero_type == 1 %}
+                {% include 'components/heros/hero-1.twig' with {'page': page} %}
+            {% else %}
+                {% include 'components/heros/hero-2.twig' with {'page': page} %}
+            {% endif %}
         {% endif %}
 
         {% if not is_front_page %}

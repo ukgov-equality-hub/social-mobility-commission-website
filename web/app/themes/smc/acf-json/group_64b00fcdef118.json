@@ -3,6 +3,26 @@
     "title": "Common :: Hero",
     "fields": [
         {
+            "key": "field_65a805788bc3b",
+            "label": "Show hero block",
+            "name": "show_hero_block",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide",
+            "ui": 1
+        },
+        {
             "key": "field_64b00fcee13c6",
             "label": "Hero Type",
             "name": "hero_type",
@@ -10,7 +30,15 @@
             "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65a805788bc3b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -32,6 +60,11 @@
             "required": 0,
             "conditional_logic": [
                 [
+                    {
+                        "field": "field_65a805788bc3b",
+                        "operator": "==",
+                        "value": "1"
+                    },
                     {
                         "field": "field_64b00fcee13c6",
                         "operator": "!=",
@@ -123,6 +156,11 @@
             "required": 0,
             "conditional_logic": [
                 [
+                    {
+                        "field": "field_65a805788bc3b",
+                        "operator": "==",
+                        "value": "1"
+                    },
                     {
                         "field": "field_64b00fcee13c6",
                         "operator": "==",
@@ -350,6 +388,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1694523322
+    "show_in_rest": 0
 }
