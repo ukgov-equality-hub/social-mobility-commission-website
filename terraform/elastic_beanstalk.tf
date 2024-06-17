@@ -491,4 +491,25 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
     value     = var.APP_KEY
   }
 
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "WPMS_MAIL_FROM"
+    value     = "contact-us@mail.${var.dns_record_subdomain_including_dot__main_website}${data.aws_route53_zone.route_53_zone_for_our_domain.name}"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "WPMS_SMTP_HOST"
+    value     = "email-smtp.eu-west-2.amazonaws.com"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "WPMS_SMTP_USER"
+    value     = aws_iam_access_key.smtp_iam_user_access_key.id
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "WPMS_SMTP_PASS"
+    value     = aws_iam_access_key.smtp_iam_user_access_key.ses_smtp_password_v4
+  }
+
 }
