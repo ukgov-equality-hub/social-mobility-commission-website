@@ -115,6 +115,30 @@ if (!defined('ITSEC_ENCRYPTION_KEY') && !empty(env('ITSEC_ENCRYPTION_KEY'))) {
 
 
 /**
+ * SMTP settings - for 'WP Mail SMTP' plugin
+ * From: https://wpmailsmtp.com/docs/how-to-secure-smtp-settings-by-using-constants/
+ */
+define( 'WPMS_ON', true ); // True turns on constants support and usage, false turns it off.
+define( 'WPMS_LICENSE_KEY', '' );
+define( 'WPMS_MAIL_FROM', env('WPMS_MAIL_FROM'));
+define( 'WPMS_MAIL_FROM_FORCE', true ); // If True, the "From Email" setting above will be used for all emails, ignoring values set by other plugins
+define( 'WPMS_MAIL_FROM_NAME', 'SMC Website Contact Form' );
+define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); // If True, the "From Name" setting above will be used for all emails, ignoring values set by other plugins
+define( 'WPMS_SET_RETURN_PATH', true ); // Sets $phpmailer-&gt;Sender if true.
+
+define( 'WPMS_DO_NOT_SEND', false ); // Possible values: true, false.
+
+define( 'WPMS_SMTP_HOST', env('WPMS_SMTP_HOST') ); // The SMTP mail host.
+define( 'WPMS_SMTP_PORT', 587 ); // The SMTP server port number.
+define( 'WPMS_SSL', '' ); // Possible values '', 'ssl', 'tls' - note TLS is not STARTTLS.
+define( 'WPMS_SMTP_AUTH', true ); // True turns it on, false turns it off.
+define( 'WPMS_SMTP_USER', env('WPMS_SMTP_USER') ); // SMTP authentication username, only used if WPMS_SMTP_AUTH is true.
+define( 'WPMS_SMTP_PASS', env('WPMS_SMTP_PASS') ); // SMTP authentication password, only used if WPMS_SMTP_AUTH is true.
+define( 'WPMS_SMTP_AUTOTLS', true ); // True turns it on, false turns it off.
+define( 'WPMS_MAILER', 'smtp' );
+
+
+/**
  * Custom Settings
  */
 define('AUTOMATIC_UPDATER_DISABLED', true);
