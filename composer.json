@@ -9,6 +9,7 @@
     "ffraenz/private-composer-installer": "^5.0",
     "hellonico/timber-dump-extension": "^1.0",
     "oscarotero/env": "^2.1",
+    "phpmailer/phpmailer": "^6.9",
     "rareloop/lumberjack-core": "^5.0.1 || ^6.0",
     "rareloop/router": "^4.4 || ^6.0",
     "roots/bedrock-autoloader": "^1.0",
