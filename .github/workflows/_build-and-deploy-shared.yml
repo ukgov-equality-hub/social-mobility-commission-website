@@ -127,6 +127,11 @@ jobs:
         run: |
           sed -i 's/TIMESTAMP_HERE/${{ github.run_id }}-${{ github.run_attempt }}/g' ./config/application.php
 
+      - name: 'Replace ACF_PRO_LICENCE_KEY_GOES_HERE with ACF Pro licence key (from GitHub secret)'
+        run: |
+          cp ./auth.example.json ./auth.json
+          sed -i 's/ACF_PRO_LICENCE_KEY_GOES_HERE/${{ secrets.ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY }}/g' ./auth.json
+
       - name: 'Create .env file'
         run: |
           touch .env
@@ -134,8 +139,6 @@ jobs:
       - name: 'Install PHP dependencies using Composer'
         run: |
           composer install
-        env:
-          ACF_PRO_KEY: ${{ secrets.ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY }}
 
       - name: 'Remove the composer.json and composer.lock files'
         run: |
