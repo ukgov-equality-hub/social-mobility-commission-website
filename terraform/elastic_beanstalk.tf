@@ -419,7 +419,7 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "MAIL_RETURN_PATH_AND_REPLY_TO"
-    value     = "smc-website@example.com"
+    value     = "contact-us@mail.${var.dns_record_subdomain_including_dot__main_website}${data.aws_route53_zone.route_53_zone_for_our_domain.name}"
   }
 
   setting {
