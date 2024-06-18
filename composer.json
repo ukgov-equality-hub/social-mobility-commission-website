@@ -28,6 +28,7 @@
     "wpackagist-plugin/redirection": "^5.1",
     "wpackagist-plugin/safe-svg": "2.2.0",
     "wpackagist-plugin/wordpress-seo": "21.*",
+    "wpackagist-plugin/wp-mail-smtp": "^4.0",
     "wpackagist-plugin/wp-smartcrop": "^2.0",
     "wpengine/advanced-custom-fields-pro": "^5.12||^6.1"
   },
