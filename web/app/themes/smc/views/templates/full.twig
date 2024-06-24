@@ -2,6 +2,9 @@
 
 {% block content %}
 
+    {% if page.post_type in ['post', 'press_releases', 'speeches', 'blogs', 'resources', 'reports', 'policy-papers', 'guidance-regulation', 'corporate-reports', 'research-stats'] %}
+        {{ include('fragments/published-date.twig') }}
+    {% endif %}
     {% if text %}
         {{ include('fragments/intro-text.twig', {text:text}) }}
     {% endif %}
