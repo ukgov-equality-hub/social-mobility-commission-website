@@ -92,7 +92,10 @@
                                     {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
                                     <div class="content">
                                         {% if fields.post_type == "events" %}
-                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('j M Y') }}</p>
+                                        {% endif %}
+                                        {% if post.post_type in ['post', 'press_releases', 'speeches', 'blogs', 'resources', 'reports', 'policy-papers', 'guidance-regulation', 'corporate-reports', 'research-stats'] %}
+                                            <p class="date label-small m-bottom-2">{{ post.date|date('j M Y') }}</p>
                                         {% endif %}
                                         <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
                                         <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>
@@ -115,7 +118,10 @@
                                     {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, class:'img'} )  }}
                                     <div class="content">
                                         {% if fields.post_type == "events" %}
-                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('d/m/Y') }}</p>
+                                            <p class="date label-small m-bottom-2">{{ card.event_date|date('j M Y') }}</p>
+                                        {% endif %}
+                                        {% if post.post_type in ['post', 'press_releases', 'speeches', 'blogs', 'resources', 'reports', 'policy-papers', 'guidance-regulation', 'corporate-reports', 'research-stats'] %}
+                                            <p class="date label-small m-bottom-2">{{ post.date|date('j M Y') }}</p>
                                         {% endif %}
                                         <h2 class="headline-3 m-bottom-4">{{ card.post_title }}</h2>
                                         <p class="body-small m-bottom-6">{{ card.post_excerpt }}</p>

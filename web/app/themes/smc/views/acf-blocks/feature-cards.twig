@@ -25,6 +25,9 @@
                                 {% set srcset = TImg.src|resize(640) ~ ' 1024w, ' ~ TImg.src|resize(640) ~ ' 300w,' %}
                                 {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
                                 <div class="content">
+                                    {% if post.post_type in ['post', 'press_releases', 'speeches', 'blogs', 'resources', 'reports', 'policy-papers', 'guidance-regulation', 'corporate-reports', 'research-stats'] %}
+                                        <p class="date label-small m-bottom-2">{{ post.date|date('j M Y') }}</p>
+                                    {% endif %}
                                     <h3 class="headline-3 m-bottom-4">{{ post.title }}</h3>
                                     <p class="body-small m-bottom-6">{{ post.text }}</p>
                                     <span class="btn-secondary">

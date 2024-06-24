@@ -2,7 +2,7 @@
     <div class="grid-container">
 
         <article class="wysiwyg-block wysiwyg">
-            <h6>Event date: {{ fields.event_date }}</h6>
+            <h6>Event date: {{ fields.event_date|date('j M Y') }}</h6>
             <h6>Event time: {{ fields.event_time }}</h6>
             <h6>Location: {{ fields.event_address }}</h6>
         </article>
