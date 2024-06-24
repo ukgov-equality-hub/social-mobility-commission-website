@@ -44,7 +44,7 @@
                                 {{ include( 'fragments/img.twig', {'TImg': TImg, 'srcset':srcset, altOverride:altOverride, class:'img'} )  }}
                                 <span class="category label-small">{{ postTypeObj.label[:1]|upper ~ postTypeObj.label[1:] }}</span>
                                 <div class="content">
-                                    <p class="date label-small m-bottom-2">{{ card.post_date|date('d/m/Y') }}</p>
+                                    <p class="date label-small m-bottom-2">{{ card.post_date|date('j M Y') }}</p>
                                     <h3 class="headline-3 m-bottom-4">{{ card.post_title }}</h3>
                                     <p class="body-small m-bottom-6">{{ post.post_excerpt }}</p>
                                     <span class="btn-secondary">
