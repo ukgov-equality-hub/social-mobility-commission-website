@@ -1,0 +1,76 @@
+{# the is_preview check allows us to adjust display for "in-gutenberg-editor" view #}
+{# the ACF fields defined for the block are available in the twig context for this #}
+{# block in the `fields` variable #}
+{% block acfblock %}
+    {# EXAMPLE CONTENT FOR EDITOR #}
+    {% if is_preview and fields == false %}
+        {#   EXAMPLE MARKUP GOES HERE - SHOWN IN EDITOR WHEN NO CONTENT EXISTS YET #}
+        {#   Alternativley - use a screengrab of what the block would look like here   #}
+    {% endif %}
+
+    {# REAL CONTENT #}
+    <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
+    <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
+
+    <div class="wrapper-section p-top-{{ fields.padding_top }} p-bottom-10">
+        <div class="grid-container">
+
+            <div class="social-media-widgets">
+                <div class="social-media-widgets--linkedin">
+                    <h2>
+                        <a href="https://www.linkedin.com/company/social-mobility-commission/">
+                            SMC on LinkedIn
+                        </a>
+                    </h2>
+                    <ul class="juicer-feed" data-feed-id="{{ fields.feed_id }}" data-per="3" data-pages="1" data-filter="LinkedIn" data-overlay="false"></ul>
+                </div>
+                <div class="social-media-widgets--twitter">
+                    <h2>
+                        <a href="https://www.twitter.com/SMCommission">
+                            SMC on X (Twitter)
+                        </a>
+                    </h2>
+                    <ul class="juicer-feed" data-feed-id="{{ fields.feed_id }}" data-per="3" data-pages="1" data-filter="Twitter" data-overlay="false"></ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .social-media-widgets {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        @media (max-width: 800px) {
+            .social-media-widgets {
+                flex-direction: column;
+            }
+        }
+
+        .social-media-widgets--linkedin, .social-media-widgets--twitter {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+        }
+
+        .social-media-widgets h1 {
+            display: none !important;
+        }
+        .social-media-widgets h2 {
+            text-align: center;
+        }
+        .social-media-widgets h3 {
+            font-size: 16px !important;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+
+

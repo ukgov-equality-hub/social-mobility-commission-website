@@ -14,6 +14,7 @@ use App\AcfBlocks\ImageFullBlock;
 use App\AcfBlocks\ImageLeftTextRightBlock;
 use App\AcfBlocks\LatestNewsAndMediaBlock;
 use App\AcfBlocks\OurWork;
+use App\AcfBlocks\SocialMediaWidgets;
 use App\AcfBlocks\Stats;
 use App\AcfBlocks\CallToActionBlock;
 use App\AcfBlocks\VideoFullBlock;
@@ -49,7 +50,8 @@ class AcfCustomBlocksService
             ImageFullBlock::class,
             VideoFullBlock::class,
             FeatureCardsBlock::class,
-            ChildsPlayGameBlock::class
+            ChildsPlayGameBlock::class,
+            SocialMediaWidgets::class
             //... others here
         ];
 
