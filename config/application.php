@@ -113,6 +113,11 @@ if (!defined('ITSEC_ENCRYPTION_KEY') && !empty(env('ITSEC_ENCRYPTION_KEY'))) {
     define('ITSEC_ENCRYPTION_KEY', env('ITSEC_ENCRYPTION_KEY'));
 }
 
+/**
+ * Advanced Custom Fields Pro licence key
+ */
+define('ACF_PRO_LICENSE', env('ACF_PRO_KEY'));
+
 
 /**
  * SMTP settings - for 'WP Mail SMTP' plugin
