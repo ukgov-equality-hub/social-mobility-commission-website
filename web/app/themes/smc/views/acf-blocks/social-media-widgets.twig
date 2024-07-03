@@ -16,14 +16,6 @@
         <div class="grid-container">
 
             <div class="social-media-widgets">
-                <div class="social-media-widgets--linkedin">
-                    <h2>
-                        <a href="https://www.linkedin.com/company/social-mobility-commission/">
-                            SMC on LinkedIn
-                        </a>
-                    </h2>
-                    <ul class="juicer-feed" data-feed-id="{{ fields.feed_id }}" data-per="3" data-pages="1" data-filter="LinkedIn" data-overlay="false"></ul>
-                </div>
                 <div class="social-media-widgets--twitter">
                     <h2>
                         <a href="https://www.twitter.com/SMCommission">
@@ -43,15 +35,10 @@
             flex-direction: row;
             width: 100%;
             max-width: 1200px;
+            justify-content: center;
         }
 
-        @media (max-width: 800px) {
-            .social-media-widgets {
-                flex-direction: column;
-            }
-        }
-
-        .social-media-widgets--linkedin, .social-media-widgets--twitter {
+        .social-media-widgets--twitter {
             width: 100%;
             max-width: 600px;
             padding: 10px;
