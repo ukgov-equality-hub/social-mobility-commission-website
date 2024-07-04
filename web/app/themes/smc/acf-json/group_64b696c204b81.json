@@ -16,8 +16,8 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y",
-            "return_format": "d\/m\/Y",
+            "display_format": "j F Y",
+            "return_format": "j M y",
             "first_day": 1
         },
         {
@@ -78,6 +78,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1691076827
+    "show_in_rest": 0
 }
