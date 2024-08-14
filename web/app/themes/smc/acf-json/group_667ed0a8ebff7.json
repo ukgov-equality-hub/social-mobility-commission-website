@@ -61,6 +61,26 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66bc99b4cef23",
+            "label": "Snap width",
+            "name": "snap_width",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The width of the page (in pixels) when the layout snaps from side-by-side to above-and-below",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 800,
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
