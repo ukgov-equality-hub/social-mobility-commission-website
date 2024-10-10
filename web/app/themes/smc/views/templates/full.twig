@@ -24,7 +24,8 @@
         {{ include('fragments/funders-custom.twig', {fields:fields}) }}
     {% endif %}
 
-    {{ page.content | raw }}
+{#    {{ page.content | raw }}#}
+    {{ page.content }}
 
     {% include 'fragments/related.twig' %}
 {% endblock %}
