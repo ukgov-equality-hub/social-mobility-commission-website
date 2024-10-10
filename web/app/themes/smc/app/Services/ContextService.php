@@ -58,36 +58,47 @@ class ContextService
     public function fetchRecentPosts(Environment $twig): Environment
     {
         $twig->addFunction( new TwigFunction('fetchRecentPosts', function($exclude = null, $override = []) {
-            $count = 2 - $exclude;
-            $args = [
-                'post_type' => array('post','blogs', 'speeches', 'press_releases'),
-                'posts_per_page'   => $count,
-                //'post_status' => 'any',
-            ];
+            $count = 3 - $exclude;
+            if ($count !== 0) {
+                $args = [
+                    'post_type' => array('post', 'blogs', 'speeches', 'press_releases'),
+                    'posts_per_page' => $count,
+                    //'post_status' => 'any',
+                ];
+                $query = new \WP_Query($args);
+                $posts = $query->get_posts();
 
-            // NB - if Intuitive Custom Post Type Order plugin is used
-            // The results are ordered as arranged in the Admin
-            $query = new \WP_Query($args);
-            $posts = $query->get_posts();
+                if(!empty($override)){
+                    $array = [];
+                    $lengthO = count($override);
+                    for($i = 1; $i <= $lengthO; $i++){
+                        $array[$i] = $override[$i - 1]['post'][0];
+                    }
+                    $j = $i;
+                    foreach($posts as $post){
+                        $array[$j] = $post;
+                        $j++;
+                    }
 
-            if(!empty($override)){
+                    $allPosts = $array;
+                }else{
+                    $allPosts = $posts;
+                }
+
+                return $allPosts;
+            }else{
                 $array = [];
                 $lengthO = count($override);
                 for($i = 1; $i <= $lengthO; $i++){
                     $array[$i] = $override[$i - 1]['post'][0];
                 }
-                $j = $i;
-                foreach($posts as $post){
-                    $array[$j] = $post;
-                    $j++;
-                }
-
-                $allPosts = $array;
-            }else{
-                $allPosts = $posts;
+                return $array;
             }
-//            dump($allPosts);
-            return $allPosts;
+
+            // NB - if Intuitive Custom Post Type Order plugin is used
+            // The results are ordered as arranged in the Admin
+
+
         }
         ));
 

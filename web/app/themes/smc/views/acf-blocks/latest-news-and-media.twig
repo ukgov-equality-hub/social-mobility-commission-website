@@ -20,9 +20,9 @@
                 </div>
 
                 {% if fields.override %}
-                    {% set overrideCount =  fields.override.post|length %}
+                        {% set overrideCount =  fields.override|length %}
                         {% set latestNewsPosts = fetchRecentPosts(overrideCount, fields.override) %}
-                    {% else %}
+                {% else %}
                         {% set latestNewsPosts = fetchRecentPosts(0) %}
                 {% endif %}
 {#                {% set latestNewsPosts = fetchRecentPosts() %}#}

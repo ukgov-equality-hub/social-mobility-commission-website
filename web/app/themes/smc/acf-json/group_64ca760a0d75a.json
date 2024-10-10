@@ -59,7 +59,7 @@
             "layout": "table",
             "pagination": 0,
             "min": 0,
-            "max": 0,
+            "max": 3,
             "collapsed": "",
             "button_label": "Add Row",
             "rows_per_page": 20,
@@ -92,8 +92,10 @@
                     ],
                     "return_format": "object",
                     "min": "",
-                    "max": "",
+                    "max": 1,
                     "elements": "",
+                    "bidirectional": 0,
+                    "bidirectional_target": [],
                     "parent_repeater": "field_64ca762f191b4"
                 }
             ]
@@ -133,5 +135,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1691075499
+    "modified": 1728561513
 }
