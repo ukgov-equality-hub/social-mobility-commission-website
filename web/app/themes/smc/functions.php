@@ -57,3 +57,21 @@ register_block_pattern_category(
     'SMC',
     array( 'label' => __( 'SMC', 'social-mobility' ) )
 );
+
+/* Check if the current post is a preview.
+   If so, then get the ID of the parent to pull the
+    ACF fields to the preview.
+*/
+function fix_acf_field_post_id_on_preview($post_id, $original_post_id)
+{
+    if (is_preview() && $original_post_id !== $post_id) {
+        // Check if $post_id is a revision
+        $parent_post_id = wp_is_post_revision( $post_id );
+
+        if ( $parent_post_id === $original_post_id ) {
+            return get_the_ID();
+        }
+    }
+    return $post_id;
+}
+add_filter('acf/validate_post_id', 'fix_acf_field_post_id_on_preview', 10, 2);
