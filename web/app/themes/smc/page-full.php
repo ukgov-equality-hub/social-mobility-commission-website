@@ -23,6 +23,11 @@ class PageFullController
         $context['text'] = $fields['intro_text'];
         $context['fields'] = $fields;
 
-        return new TimberResponse('templates/full.twig', $context);
+        if ( post_password_required( $context['page']->ID ) ) {
+            Timber::render( 'single-password.twig', $context );
+            return new TimberResponse('templates/single-password.twig', $context);
+        } else {
+            return new TimberResponse('templates/full.twig', $context);
+        }
     }
 }
