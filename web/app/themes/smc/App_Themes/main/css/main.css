@@ -1029,7 +1029,7 @@ p.caption { font-size: 1rem; font-weight: 400; line-height: 1.5; letter-spacing:
 
 .wrapper-header { background-color: #fff; }
 .wrapper-header .logo { display: inline-block; margin: 1.85rem 0; }
-.wrapper-header .logo img { height: 36px; max-height: 36px; object-position: 0 0 !important; }
+.wrapper-header .logo img { height: 36px; max-height: 36px; object-position: 0 center !important; object-fit: contain; }
 
 /* Tablet - Media query */
 @media screen and (min-width: 48em) and (max-width: 63.9375em) { .wrapper-header { height: 65px; }
