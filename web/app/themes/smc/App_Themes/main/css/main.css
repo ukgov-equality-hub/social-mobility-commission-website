@@ -24,12 +24,12 @@
 .color-pallete li.light-yellow:before { background-color: #FCF8DE; }
 .color-pallete li.semantic-red:before { background-color: #FB6060; }
 .color-pallete li.border-red:before { background-color: #CA2F2F; }
-.color-pallete li.bold-gradient:before { background: linear-gradient(90deg, #FB7E5B 0%, #FB905B 100%); }
+.color-pallete li.bold-gradient:before { background: linear-gradient(90deg, rgba(0, 65, 55, 0.9) 0%, rgb(0, 65, 55) 100%); }
 .color-pallete li.subdued-gradient:before { background: linear-gradient(90deg, #FEE3DC 0%, #FCF8DE 100%); }
 
 /* COLOUR VARIABLES */
 /*
-FADER: 
+FADER:
 /////////////////////////////
 .link {
 	@include fader;
@@ -1069,13 +1069,13 @@ p.caption { font-size: 1rem; font-weight: 400; line-height: 1.5; letter-spacing:
 @media screen and (max-width: 47.9375em) { .wrapper-footer .headline-5 { margin-bottom: 1rem; }
   .wrapper-base .base-menu { margin-bottom: .7rem; } }
 .wrapper-section { background-color: #fff; }
-.wrapper-section.bold-gradient { background: linear-gradient(90deg, #FB7E5B 0%, #FB905B 100%); }
+.wrapper-section.bold-gradient { background: linear-gradient(90deg, rgba(0, 65, 55, 0.9) 0%, rgb(0, 65, 55) 100%); }
 .wrapper-section.light-teal { background-color: #D9F2EE; }
 .wrapper-section.light-blue { background-color: #E7ECFE; }
 .wrapper-section.subdued-gradient { background: linear-gradient(90deg, #FEE3DC 0%, #FCF8DE 100%); }
 
 .wrapper-inner { background-color: #fff; border-radius: 16px; padding-left: 1.5rem; padding-right: 1.5rem; }
-.wrapper-inner.bold-gradient { background: linear-gradient(90deg, #FB7E5B 0%, #FB905B 100%); }
+.wrapper-inner.bold-gradient { background: linear-gradient(90deg, rgba(0, 65, 55, 0.9) 0%, rgb(0, 65, 55) 100%); }
 .wrapper-inner.light-teal { background-color: #D9F2EE; }
 .wrapper-inner.light-blue { background-color: #E7ECFE; }
 .wrapper-inner.subdued-gradient { background: linear-gradient(90deg, #FEE3DC 0%, #FCF8DE 100%); }
