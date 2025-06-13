@@ -1039,7 +1039,7 @@ p.caption { font-size: 1rem; font-weight: 400; line-height: 1.5; letter-spacing:
 @media screen and (max-width: 47.9375em) { .wrapper-header { height: 65px; }
   .wrapper-header .logo { margin: 1.2rem 0; }
   .wrapper-header .logo img { max-height: 24px; } }
-.wrapper-footer { background-color: #0C2231; }
+.wrapper-footer { background-color: #004137; }
 .wrapper-footer .footer-logo { max-height: 72px; }
 .wrapper-footer h1, .wrapper-footer h2, .wrapper-footer h3, .wrapper-footer h4, .wrapper-footer h5, .wrapper-footer h6, .wrapper-footer p, .wrapper-footer li, .wrapper-footer a { color: #fff; }
 .wrapper-footer .footer-menu { list-style: none; margin-left: 0; }
@@ -1053,7 +1053,7 @@ p.caption { font-size: 1rem; font-weight: 400; line-height: 1.5; letter-spacing:
 .wrapper-footer .footer-social li a { display: inline-block; font-size: 1.5rem; transition: .3s ease-out; }
 .wrapper-footer .footer-social li a:hover, .wrapper-footer .footer-social li a:focus { color: #D9F2EE; }
 
-.wrapper-base { background-color: #0C2231; border-top: 1px solid #fff; }
+.wrapper-base { background-color: #004137; border-top: 1px solid #fff; }
 .wrapper-base .base-menu { list-style: none; margin: 0; }
 .wrapper-base .base-menu li { position: relative; display: inline-block; margin-right: 1.875rem; }
 .wrapper-base .base-menu li:after { content: ''; height: 6px; width: 6px; background-color: #fff; border-radius: 50%; position: absolute; right: -1.25rem; top: 50%; transform: translateY(-50%); }
