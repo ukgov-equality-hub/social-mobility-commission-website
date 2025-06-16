@@ -25,7 +25,7 @@
 .color-pallete li.semantic-red:before { background-color: #FB6060; }
 .color-pallete li.border-red:before { background-color: #CA2F2F; }
 .color-pallete li.bold-gradient:before { background: linear-gradient(90deg, rgba(0, 65, 55, 0.9) 0%, rgb(0, 65, 55) 100%); }
-.color-pallete li.subdued-gradient:before { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0.25) 0%, rgb(from #00FF96 r g b / 0.75) 100%); }
+.color-pallete li.subdued-gradient:before { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0) 0%, rgb(from #00FF96 r g b / 1) 100%); }
 
 /* COLOUR VARIABLES */
 /*
@@ -1079,17 +1079,17 @@ p.caption { font-size: 1rem; font-weight: 400; line-height: 1.5; letter-spacing:
 .wrapper-section.bold-gradient p { color: #F0F0F0; }
 .wrapper-section.light-teal { background-color: #D9F2EE; }
 .wrapper-section.light-blue { background-color: #E7ECFE; }
-.wrapper-section.subdued-gradient { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0.25) 0%, rgb(from #00FF96 r g b / 0.75) 100%); }
+.wrapper-section.subdued-gradient { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0) 0%, rgb(from #00FF96 r g b / 1) 100%); }
 
 .wrapper-inner { background-color: #fff; border-radius: 16px; padding-left: 1.5rem; padding-right: 1.5rem; }
 .wrapper-inner.bold-gradient { background: linear-gradient(90deg, rgba(0, 65, 55, 0.9) 0%, rgb(0, 65, 55) 100%); }
 .wrapper-inner.light-teal { background-color: #D9F2EE; }
 .wrapper-inner.light-blue { background-color: #E7ECFE; }
-.wrapper-inner.subdued-gradient { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0.25) 0%, rgb(from #00FF96 r g b / 0.75) 100%); }
+.wrapper-inner.subdued-gradient { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0) 0%, rgb(from #00FF96 r g b / 1) 100%); }
 
-.banner-block { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0.25) 0%, rgb(from #00FF96 r g b / 0.75) 100%); padding: 4rem; border-radius: 24px; }
+.banner-block { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0) 0%, rgb(from #00FF96 r g b / 1) 100%); padding: 4rem; border-radius: 24px; }
 
-.hero-block { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0.25) 0%, rgb(from #00FF96 r g b / 0.75) 100%); padding: 4rem; border-radius: 16px; }
+.hero-block { background: linear-gradient(90deg, rgb(from #00FF96 r g b / 0) 0%, rgb(from #00FF96 r g b / 1) 100%); padding: 4rem; border-radius: 16px; }
 .hero-block .grid-padding-x { margin-left: -1.5rem; margin-right: -1.5rem; }
 .hero-block .display-2 { font-weight: 400; margin-bottom: 2.5rem; }
 .hero-block .display-2 strong { font-weight: 900; }
