@@ -5,6 +5,10 @@
 
   &.bold-gradient {
     background: $bold-gradient;
+
+    h1, h2, h3, h4, h5, h6, p {
+        color: #F0F0F0;  // New colour: White
+    }
   }
 
   &.light-teal {
