@@ -6,6 +6,7 @@ web/app/mu-plugins/*/
 !web/app/plugins/formidable-pro/
 !web/app/plugins/formidable/
 !web/app/plugins/formidable-quizzes/
+!web/app/plugins/wp-all-import-pro/
 
 web/app/upgrade
 web/app/uploads/*
