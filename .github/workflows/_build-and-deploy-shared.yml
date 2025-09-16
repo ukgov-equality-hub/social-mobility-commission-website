@@ -37,6 +37,10 @@ on:
         required: false
       ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY:
         required: true
+      WP_MIGRATE_DB_PRO_LICENCE_USERNAME:
+        required: true
+      WP_MIGRATE_DB_PRO_LICENCE_PASSWORD:
+        required: true
       AUTH_KEY:
         required: true
       SECURE_AUTH_KEY:
@@ -130,10 +134,12 @@ jobs:
         run: |
           sed -i 's/TIMESTAMP_HERE/${{ github.run_id }}-${{ github.run_attempt }}/g' ./config/application.php
 
-      - name: 'Replace ACF_PRO_LICENCE_KEY_GOES_HERE with ACF Pro licence key (from GitHub secret)'
+      - name: 'Replace ACF Pro & WP Migrate DB Pro licence key placeholders with real licence key details (from GitHub secrets)'
         run: |
           cp ./auth.example.json ./auth.json
           sed -i 's/ACF_PRO_LICENCE_KEY_GOES_HERE/${{ secrets.ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY }}/g' ./auth.json
+          sed -i 's/WP_MIGRATE_DB_PRO_LICENCE_USERNAME_GOES_HERE/${{ secrets.WP_MIGRATE_DB_PRO_LICENCE_USERNAME }}/g' ./auth.json
+          sed -i 's/WP_MIGRATE_DB_PRO_LICENCE_PASSWORD_GOES_HERE/${{ secrets.WP_MIGRATE_DB_PRO_LICENCE_PASSWORD }}/g' ./auth.json
 
       - name: 'Create .env file'
         run: |

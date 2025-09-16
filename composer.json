@@ -30,7 +30,8 @@
     "wpackagist-plugin/wordpress-seo": "21.*",
     "wpackagist-plugin/wp-mail-smtp": "^4.0",
     "wpackagist-plugin/wp-smartcrop": "^2.0",
-    "wpengine/advanced-custom-fields-pro": "^5.12||^6.1"
+    "wpengine/advanced-custom-fields-pro": "^5.12||^6.1",
+    "deliciousbrains-plugin/wp-migrate-db-pro": ">1.8"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5.4",
@@ -47,6 +48,11 @@
       "type": "composer",
       "url": "https://connect.advancedcustomfields.com",
       "only": ["wpengine/advanced-custom-fields-pro"]
+    },
+    {
+      "type":"composer",
+      "url":"https://composer.deliciousbrains.com",
+      "only": ["deliciousbrains-plugin/*"]
     }
   ],
   "config": {
