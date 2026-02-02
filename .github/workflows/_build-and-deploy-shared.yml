@@ -29,36 +29,6 @@ on:
         required: true
       TERRAFORM_AWS_SECRET_ACCESS_KEY:
         required: true
-      MYSQL_PASSWORD:
-        required: true
-      BASIC_AUTH_USERNAME:
-        required: false
-      BASIC_AUTH_PASSWORD:
-        required: false
-      ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY:
-        required: true
-      WP_MIGRATE_DB_PRO_LICENCE_USERNAME:
-        required: true
-      WP_MIGRATE_DB_PRO_LICENCE_PASSWORD:
-        required: true
-      AUTH_KEY:
-        required: true
-      SECURE_AUTH_KEY:
-        required: true
-      LOGGED_IN_KEY:
-        required: true
-      NONCE_KEY:
-        required: true
-      AUTH_SALT:
-        required: true
-      SECURE_AUTH_SALT:
-        required: true
-      LOGGED_IN_SALT:
-        required: true
-      NONCE_SALT:
-        required: true
-      APP_KEY:
-        required: true
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.TERRAFORM_AWS_ACCESS_KEY_ID }}
@@ -90,19 +60,6 @@ jobs:
         run: |
           terraform apply \
           -var-file "${{ inputs.TERRAFORM_TFVARS_FILE }}" \
-          -var "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" \
-          -var "BASIC_AUTH_USERNAME=${{ secrets.BASIC_AUTH_USERNAME }}" \
-          -var "BASIC_AUTH_PASSWORD=${{ secrets.BASIC_AUTH_PASSWORD }}" \
-          -var "ACF_PRO_KEY=${{ secrets.ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY }}" \
-          -var "AUTH_KEY=${{ secrets.AUTH_KEY }}" \
-          -var "SECURE_AUTH_KEY=${{ secrets.SECURE_AUTH_KEY }}" \
-          -var "LOGGED_IN_KEY=${{ secrets.LOGGED_IN_KEY }}" \
-          -var "NONCE_KEY=${{ secrets.NONCE_KEY }}" \
-          -var "AUTH_SALT=${{ secrets.AUTH_SALT }}" \
-          -var "SECURE_AUTH_SALT=${{ secrets.SECURE_AUTH_SALT }}" \
-          -var "LOGGED_IN_SALT=${{ secrets.LOGGED_IN_SALT }}" \
-          -var "NONCE_SALT=${{ secrets.NONCE_SALT }}" \
-          -var "APP_KEY=${{ secrets.APP_KEY }}" \
           -auto-approve
         working-directory: ./terraform
 
@@ -116,85 +73,3 @@ jobs:
           echo test=$(jq -r '.resources[] | select(.name == "main_app_elastic_beanstalk_code_s3_bucket").instances[].attributes.bucket' current_tf_state.json) >> main_app_elastic_beanstalk_code_s3_bucket.txt
           cat main_app_elastic_beanstalk_code_s3_bucket.txt
           cat main_app_elastic_beanstalk_code_s3_bucket.txt >> $GITHUB_OUTPUT
-
-  build:
-    name: 'Build'
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.GITHUB_ACTIONS_ENVIRONMENT }}
-
-    steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v4
-
-      - name: 'Save build run info to JSON file'
-        run: |
-          echo '{ "git_commit": "${{ github.sha }}", "git_branch": "${{ github.ref_name }}", "github_action_name": "${{ github.workflow }}", "github_action_run_url": "https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}" }' > build-info.json
-
-      - name: 'Replace TIMESTAMP_HERE with GitHub Run ID / Run Attempt'
-        run: |
-          sed -i 's/TIMESTAMP_HERE/${{ github.run_id }}-${{ github.run_attempt }}/g' ./config/application.php
-
-      - name: 'Replace ACF Pro & WP Migrate DB Pro licence key placeholders with real licence key details (from GitHub secrets)'
-        run: |
-          cp ./auth.example.json ./auth.json
-          sed -i 's/ACF_PRO_LICENCE_KEY_GOES_HERE/${{ secrets.ADVANCED_CUSTOM_FIELDS_PRO_LICENCE_KEY }}/g' ./auth.json
-          sed -i 's/WP_MIGRATE_DB_PRO_LICENCE_USERNAME_GOES_HERE/${{ secrets.WP_MIGRATE_DB_PRO_LICENCE_USERNAME }}/g' ./auth.json
-          sed -i 's/WP_MIGRATE_DB_PRO_LICENCE_PASSWORD_GOES_HERE/${{ secrets.WP_MIGRATE_DB_PRO_LICENCE_PASSWORD }}/g' ./auth.json
-
-      - name: 'Create .env file'
-        run: |
-          touch .env
-
-      - name: 'Install PHP dependencies using Composer'
-        run: |
-          composer install
-
-      - name: 'Remove the composer.json and composer.lock files'
-        run: |
-          rm -f composer.json
-          rm -f composer.lock
-
-      - name: 'Zip up the code'
-        run: |
-          zip -rq build.zip . -x "*.git/*"
-
-      - name: 'Save build zip as GitHub Actions artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-zip
-          path: build.zip
-
-  deploy:
-    name: 'Deploy'
-    runs-on: ubuntu-latest
-    needs: [terraform, build]
-    environment: ${{ inputs.GITHUB_ACTIONS_ENVIRONMENT }}
-
-    env:
-      ZIP_FILE_NAME: "${{ inputs.TERRAFORM_SERVICE_NAME }}_run${{ github.run_id }}_attempt${{ github.run_attempt }}.zip"
-      EB_CODE_BUCKET: "${{needs.terraform.outputs.main_app_elastic_beanstalk_code_s3_bucket}}"
-      EB_APP_NAME: "${{ inputs.TERRAFORM_SERVICE_NAME }}__${{ inputs.TERRAFORM_ENVIRONMENT_NAME }}__Elastic_Beanstalk_Application"
-      EB_ENVIRONMENT_NAME: "${{ inputs.TERRAFORM_SERVICE_NAME_HYPHENS }}--${{ inputs.TERRAFORM_ENVIRONMENT_NAME }}--EB-Env"
-      EB_VERSION_LABEL: "v_run${{ github.run_id }}_attempt${{ github.run_attempt }}"
-
-    steps:
-      - name: 'Download build zip from GitHub Actions artifacts'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-zip
-
-      - name: 'Copy the zip file to AWS S3'
-        run: |
-          aws s3 cp ./build.zip "s3://${{ env.EB_CODE_BUCKET }}/${{ env.ZIP_FILE_NAME }}"
-
-      - name: 'Create Elastic Beanstalk application version'
-        run: |
-          aws elasticbeanstalk create-application-version --application-name "${{ env.EB_APP_NAME }}" --version-label "${{ env.EB_VERSION_LABEL }}" --source-bundle "S3Bucket=${{ env.EB_CODE_BUCKET }},S3Key=${{ env.ZIP_FILE_NAME }}"
-
-      - name: 'Deploy new version to Elastic Beanstalk instances'
-        run: |
-          aws elasticbeanstalk update-environment --application-name "${{ env.EB_APP_NAME }}" --environment-name "${{ env.EB_ENVIRONMENT_NAME }}" --version-label "${{ env.EB_VERSION_LABEL }}"
-
-      - name: 'Wait for the Elastic Beanstalk environment to finish updating (to prevent us trying to deploy two changes at once)'
-        run: |
-          aws elasticbeanstalk wait environment-updated --application-name "${{ env.EB_APP_NAME }}" --environment-name "${{ env.EB_ENVIRONMENT_NAME }}" --version-label "${{ env.EB_VERSION_LABEL }}"

@@ -76,7 +76,7 @@ function handler(event) {
         statusCode: 302,
         statusDescription: 'Found',
         headers: {
-            "location": { "value": "https://${var.dns_record_subdomain_including_dot__main_website}${data.aws_route53_zone.route_53_zone_for_our_domain.name}" + event.request.uri }
+            "location": { "value": "https://${data.aws_route53_zone.route_53_zone_for_our_domain.name}" + event.request.uri }
         }
     };
     return response;
