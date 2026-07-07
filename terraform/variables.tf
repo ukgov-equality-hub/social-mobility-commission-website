@@ -21,6 +21,11 @@ variable "environment_hyphens" {
   description = "The environment name (using hyphen-style)."
 }
 
+variable "dns_record_subdomain_including_dot__email_domain" {
+  type = string
+  description = "The subdomain (including dot - e.g. 'dev.' or just '' for production) for the Route53 alias record - for the main website"
+}
+
 variable "create_redirect_from_www_domain" {
   type = bool
   description = "Should terraform create a CloudFront distribution to redirect the www domain to the root domain"
